@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Women's T-Shirt",
+    "category": "women",
+    "subcategory": "clothes",
+    "price": 19.99,
+    "oldPrice": 29.99,
+    "stock": 50,
+    "rating": 4.5,
+    "image": "/api/placeholder/300/300",
+    "description": "Comfortable cotton T-shirt perfect for everyday wear"
+  },
+  {
+    "id": "2",
+    "name": "Men's Jeans",
+    "category": "men",
+    "subcategory": "clothes",
+    "price": 49.99,
+    "oldPrice": 69.99,
+    "stock": 30,
+    "rating": 4.8,
+    "image": "/api/placeholder/300/300",
+    "description": "Classic fit denim jeans with premium quality"
+  },
+  {
+    "id": "3",
+    "name": "Children's Sneakers",
+    "category": "children",
+    "subcategory": "shoes",
+    "price": 29.99,
+    "oldPrice": 39.99,
+    "stock": 25,
+    "rating": 4.2,
+    "image": "/api/placeholder/300/300",
+    "description": "Comfortable and durable sneakers for active kids"
+  },
+    {
+    "id": "4",
+    "name": "Men's Sneakers",
+    "category": "men",
+    "subcategory": "shoes",
+    "price": 59.99,
+    "oldPrice": 69.99,
+    "stock": 29,
+    "rating": 4.2,
+    "image": "/api/placeholder/300/300",
+    "description": "Comfortable and durable sneakers for active men"
+  }
+]
