@@ -35,7 +35,7 @@
     "image": "/api/placeholder/300/300",
     "description": "Comfortable and durable sneakers for active kids"
   },
-    {
+  {
     "id": "4",
     "name": "Men's Sneakers",
     "category": "men",
@@ -46,5 +46,101 @@
     "rating": 4.2,
     "image": "/api/placeholder/300/300",
     "description": "Comfortable and durable sneakers for active men"
+  },
+  {
+    "id": "41",
+    "name": "Women's Boots",
+    "category": "women",
+    "subcategory": "shoes",
+    "price": 79.99,
+    "oldPrice": 99.99,
+    "stock": 20,
+    "rating": 4.6,
+    "image": "/api/placeholder/300/300",
+    "description": "Stylish and comfortable boots for women"
+  },
+  {
+    "id": "70",
+    "name": "Children's Sandals",
+    "category": "children",
+    "subcategory": "shoes",
+    "price": 19.99,
+    "oldPrice": 29.99,
+    "stock": 45,
+    "rating": 4.1,
+    "image": "/api/placeholder/300/300",
+    "description": "Comfortable and durable sandals for kids"
+  },
+  {
+    "id": "5",
+    "name": "Women's Dress",
+    "category": "women",
+    "subcategory": "clothes",
+    "price": 39.99,
+    "oldPrice": 59.99,
+    "stock": 40,
+    "rating": 4.7,
+    "image": "/api/placeholder/300/300",
+    "description": "Elegant dress perfect for formal occasions"
+  },
+  {
+    "id": "40",
+    "name": "Children's Hoodie",
+    "category": "children",
+    "subcategory": "clothes",
+    "price": 24.99,
+    "oldPrice": 34.99,
+    "stock": 35,
+    "rating": 4.3,
+    "image": "/api/placeholder/300/300",
+    "description": "Soft and cozy hoodie for kids"
+  },
+  {
+    "id": "71",
+    "name": "Women's Handbag",
+    "category": "women",
+    "subcategory": "bags",
+    "price": 49.99,
+    "oldPrice": 69.99,
+    "stock": 30,
+    "rating": 4.5,
+    "image": "/api/placeholder/300/300",
+    "description": "Stylish and spacious handbag for women"
+  },
+  {
+    "id": "86",
+    "name": "Women's Watch",
+    "category": "women",
+    "subcategory": "accessories",
+    "price": 29.99,
+    "oldPrice": 39.99,
+    "stock": 40,
+    "rating": 4.4,
+    "image": "/api/placeholder/300/300",
+    "description": "Stylish and functional watch for women"
+  },
+  {
+    "id": "87",
+    "name": "Men's Wallet",
+    "category": "men",
+    "subcategory": "accessories",
+    "price": 19.99,
+    "oldPrice": 29.99,
+    "stock": 35,
+    "rating": 4.3,
+    "image": "/api/placeholder/300/300",
+    "description": "Durable and functional wallet for men"
+  },
+  {
+    "id": "100",
+    "name": "Children's Hair Clips",
+    "category": "children",
+    "subcategory": "accessories",
+    "price": 4.99,
+    "oldPrice": 9.99,
+    "stock": 60,
+    "rating": 4.1,
+    "image": "/api/placeholder/300/300",
+    "description": "Fun and colorful hair clips for kids"
   }
 ]
