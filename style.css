@@ -10,8 +10,29 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     background: white;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+     z-index: 
 }
-       .hamburger {
+
+.breadcrumb{
+    position:fixed;
+    top:40px;
+    left: 0;
+    right: 0;
+    background: white;
+    margin-bottom:10px ;
+}
+.breadcrumb #current-category {
+    color: #ff4141;
+    font-weight: bold;
+ }
+
+.hamburger {
     font-size: 1.5rem;
     cursor: pointer;
     margin-right: 1rem;
@@ -110,7 +131,7 @@ header {
 }
 #cart-count{
   background:#f44336;
-  padding:4px 8px;
+  padding:4px 6px;
   border-radius: 50%;
   color:#fff;
   margin-top:-10px;
@@ -121,6 +142,7 @@ header {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
+    margin-top:80px;
 }
 .product-card {
     border: 1px solid #ddd;
@@ -153,13 +175,13 @@ header {
     color: #999;
 }
 .stock-indicator {
-    background-color: #4CAF50;
+    background-color: #ff4141;
     height: 10px;
     margin: 10px 0;
     border-radius:15% 0 0 15% ;
 }
 .add-to-cart {
-    background-color: #4CAF50;
+    background-color: #ff4141;
     color: white;
     border: none;
     padding: 10px;
@@ -177,6 +199,15 @@ header {
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 1000;
 }
+
+#search-input{
+  padding:10px 25px;
+  border:none;
+  background: #e9e9e9;
+  border-radius:15px;
+  
+}
+
 .modal-content {
     background-color: white;
     margin: 10% auto;
@@ -250,7 +281,7 @@ header {
     border-radius: 5px;
 }
 #checkout, #close-cart {
-    background-color: #4CAF50;
+    background-color: #ff4141;
     color: white;
     border: none;
     padding: 10px;
@@ -262,7 +293,7 @@ header {
     position: fixed;
     top: 25px;
     right: 35px;
-    background-color: #4CAF50;
+    background-color: #ff4141;
     color: white;
     padding: 15px;
     border-radius: 8px;
@@ -440,4 +471,134 @@ padding: 1rem;
     .footer-content {
 grid-template-columns: 1fr;
     }
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.loader-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  animation: spin 2s linear infinite;
+}
+
+.loader svg {
+  width: 100%;
+  height: 100%;
+}
+
+.loader circle {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: dash 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 300;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 300;
+  }
+}
+
+h2,h3{
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #3498db;
+}
+
+h2 span {
+  color: #ff4141;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #3498db;
+}
+
+.animated-banner {
+    background-color: #ff4141;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    margin-top:10px;
+    z-index: -10;
+}
+.banner-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 15s linear infinite;
+}
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight:600;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color:#fff;
+    font-weight:400;
+}
+.cta-button {
+    background-color: #ff4141;
+    color: white;
+    padding: 7px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #ff245678;
 }
