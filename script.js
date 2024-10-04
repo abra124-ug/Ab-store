@@ -241,3 +241,4 @@
 
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', initializeMenus);
+        
