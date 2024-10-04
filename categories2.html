@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ABStore - Categories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .breadcrumb{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding:15px 20px;
+        }
+
+
+        .categories-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        #categories-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .category-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #ff4141;
+        }
+
+        .category-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .category-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .category-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #ff4141;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 2px solid #ff4141;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .category-link:hover {
+            background-color: #ff4141;
+            color: #fff;
+        }
+
+        .category-count {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4141;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+
+        @media (max-width: 768px) {
+            #categories-content {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        
+        .main{
+          height:50px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="breadcrumb">
+        <a href="index.html">Home</a> > 
+        <a href="categories2.html" id="current-category">Categories</a>
+    </nav>
+
+<section class="main"></section>
+
+    <div class="categories-container">
+        <div id="categories-content">
+            <!-- Categories will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Category data
+        const categories = [
+            {
+                title: 'All Products',
+                icon: '🛍️',
+                description: 'Browse our complete collection',
+                link: 'All products.html',
+                count: 1500
+            },
+            {
+                title: 'Women',
+                icon: '👗',
+                description: 'Fashion for women',
+                link: 'women.html',
+                count: 500
+            },
+            {
+                title: 'Men',
+                icon: '👔',
+                description: 'Fashion for men',
+                link: 'men.html',
+                count: 400
+            },
+            {
+                title: 'Kids',
+                icon: '🧸',
+                description: 'Fashion for children',
+                link: 'kids.html',
+                count: 300
+            },
+            {
+                title: 'Accessories',
+                icon: '👜',
+                description: 'Complete your look',
+                link: 'accessories.html',
+                count: 200
+            },
+            {
+                title: 'New Arrivals',
+                icon: '⭐',
+                description: 'Latest products',
+                link: 'new-arrivals.html',
+                count: 150
+            },
+            {
+                title: 'Sale',
+                icon: '🏷️',
+                description: 'Special offers',
+                link: 'sale.html',
+                count: 100
+            },
+            {
+                title: 'Trending',
+                icon: '🔥',
+                description: 'Popular right now',
+                link: 'trending.html',
+                count: 80
+            }
+        ];
+
+        // Function to create category cards
+        function createCategoryCards() {
+            const categoriesContent = document.getElementById('categories-content');
+            
+            categories.forEach(category => {
+                const categoryCard = document.createElement('div');
+                categoryCard.className = 'category-card';
+                categoryCard.innerHTML = `
+                    <div class="category-icon">${category.icon}</div>
+                    <h3 class="category-title">${category.title}</h3>
+                    <p class="category-description">${category.description}</p>
+                    <a href="${category.link}" class="category-link">View Products</a>
+                    <span class="category-count">${category.count}</span>
+                `;
+                
+                // Add click event to make entire card clickable
+                categoryCard.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('category-link')) {
+                        window.location.href = category.link;
+                    }
+                });
+                
+                categoriesContent.appendChild(categoryCard);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            createCategoryCards();
+        });
+    </script>
+</body>
+</html>

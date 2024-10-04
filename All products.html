@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ABStore - All-products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+    <header>
+        <div class="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo">ab<span>store</span></div>
+        <div class="icons">
+            <i class="icon fas fa-search" id="search-icon"></i>
+            <i class="icon fas fa-shopping-cart" id="cart-icon"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="index.html">Home</a> > 
+        <a href="categories2.html">Categories</a> > 
+        <span id="current-category">All Products</span>
+    </nav>
+    
+     <div class="overlay"></div>
+     
+      <div class="side-menu">
+        <div class="menu-header">
+            <h2>Menu</h2>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <ul class="menu-list">
+            <li><a href="#"><i class="fas fa-user"></i> My Account</a></li>
+            <li><a href="#"><i class="fas fa-box"></i> Orders</a></li>
+            <li><a href="#"><i class="fas fa-comment"></i> Reviews</a></li>
+            <li><a href="#"><i class="fas fa-ticket"></i> Vouchers</a></li>
+            <li><a href="#"><i class="fas fa-heart"></i> Saved Items</a></li>
+            <li><a href="#"><i class="fas fa-shopping-basket"></i> Supermarket</a></li>
+            <li><a href="#"><i class="fas fa-mobile"></i> Phones & Tablets</a></li>
+            <li><a href="#"><i class="fas fa-home"></i> Home & Office</a></li>
+            <li><a href="#"><i class="fas fa-tv"></i> Electronics</a></li>
+            <li><a href="#"><i class="fas fa-heart"></i> Health & Beauty</a></li>
+            <li><a href="#"><i class="fas fa-tshirt"></i> Fashion</a></li>
+            <li><a href="#"><i class="fas fa-laptop"></i> Computing</a></li>
+        </ul>
+    </div>
+    
+    <main class="product-grid" id="product-grid"></main>
+
+    <div id="menu">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#" data-category="women">Women</a></li>
+                <li><a href="#" data-category="men">Men</a></li>
+                <li><a href="#" data-category="children">Children</a></li>
+            </ul>
+        </div>
+    </div>
+
+   <div id="search-bar">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <input type="text" id="search-input" placeholder="Search products...">
+            <div id="search-results"></div>
+        </div>
+    </div>
+
+    <div id="cart-page">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button id="checkout">Checkout</button>
+            <button id="close-cart">Close</button>
+        </div>
+    </div>
+
+    <div class="alert" id="alert">Added to cart</div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About ABStore</h3>
+                <p>Your premier fashion destination offering curated collections of trendy clothing, accessories, and lifestyle products. We believe in making fashion accessible to everyone.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-envelope"></i>Contact Us</a></li>
+                    <li><a href="#"><i class="fas fa-truck"></i>Shipping Information</a></li>
+                    <li><a href="#"><i class="fas fa-undo"></i>Returns & Exchanges</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i>FAQs</a></li>
+                    <li><a href="#"><i class="fas fa-tag"></i>Size Guide</a></li>
+                    <li><a href="#"><i class="fas fa-shield-alt"></i>Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-tshirt"></i>New Arrivals</a></li>
+                    <li><a href="#"><i class="fas fa-percentage"></i>Special Offers</a></li>
+                    <li><a href="#"><i class="fas fa-gift"></i>Gift Cards</a></li>
+                    <li><a href="#"><i class="fas fa-store"></i>Store Locator</a></li>
+                    <li><a href="#"><i class="fas fa-heart"></i>Wishlist</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i>My Account</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="payment-methods">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+                <i class="fab fa-cc-apple-pay"></i>
+            </div>
+            <p>&copy; 2024 ABStore. All rights reserved. Designed with <i class="fas fa-heart" style="color: #ff4141"></i> by abra.codes for fashion lovers</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script src="script2.js"></script>
+    
+</body>
+</html>
