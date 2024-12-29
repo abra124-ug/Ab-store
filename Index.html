@@ -3,204 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>ABStore - Your Fashion Destination</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Authentication Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #00A884, #005F4E);
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 25px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #005F4E;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #777;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab.active {
+            color: #00A884;
+        }
+
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #00A884;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tab.active::after {
+            transform: scaleX(1);
+        }
+
+        .forms-wrapper {
+            position: relative;
+            height: 200px;
+        }
+
+        .form-container {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease;
+            visibility: hidden;
+        }
+
+        .form-container.active {
+            opacity: 1;
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .form-container.previous {
+            transform: translateX(-100%);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #00A884;
+            outline: none;
+        }
+
+        .continue-btn {
+            width: 100%;
+            padding: 12px;
+            background: #00A884;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .continue-btn:hover {
+            background: #005F4E;
+            transform: translateY(-2px);
+        }
+
+        .continue-btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            margin: 20px 0;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .google-btn {
+            width: 100%;
+            padding: 12px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+
+        .google-btn:hover {
+            background: #f7f7f7;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .terms {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .terms a {
+            color: #00A884;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .terms a:hover {
+            color: #005F4E;
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #ff3333;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .success-message {
+            color: #00A884;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .user-info {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .logout-btn {
+            background: #ff3333;
+            margin-top: 10px;
+        }
+
+        .logout-btn:hover {
+            background: #cc0000;
+        }
+    </style>  
 </head>
 <body>
-    <header>
-        <div class="hamburger">
-          <i class="fas fa-bars"></i>
-        </div>
-        <div class="logo">ab<span>store</span></div>
-        <div class="icons">
-            <i class="icon fas fa-search" id="search-icon"></i>
-            <i class="icon fas fa-shopping-cart" id="cart-icon"></i>
-            <span id="cart-count">0</span>
-        </div>
-    </header>
-
-    <nav class="breadcrumb">
-        <a href="#" id="current-category">Home</a> > 
-        <a href="categories2.html">Categories</a>
-    </nav>
-    
-     <div class="overlay"></div>
-     
-      <div class="side-menu">
-        <div class="menu-header">
-            <h2>Menu</h2>
-            <div class="close-btn">
-                <i class="fas fa-times"></i>
-            </div>
-        </div>
-        <ul class="menu-list">
-            <li><a href="#"><i class="fas fa-user"></i> My Account</a></li>
-            <li><a href="#"><i class="fas fa-box"></i> Orders</a></li>
-            <li><a href="#"><i class="fas fa-comment"></i> Reviews</a></li>
-            <li><a href="#"><i class="fas fa-ticket"></i> Vouchers</a></li>
-            <li><a href="#"><i class="fas fa-heart"></i> Saved Items</a></li>
-            <li><a href="#"><i class="fas fa-shopping-basket"></i> Supermarket</a></li>
-            <li><a href="#"><i class="fas fa-mobile"></i> Phones & Tablets</a></li>
-            <li><a href="#"><i class="fas fa-home"></i> Home & Office</a></li>
-            <li><a href="#"><i class="fas fa-tv"></i> Electronics</a></li>
-            <li><a href="#"><i class="fas fa-heart"></i> Health & Beauty</a></li>
-            <li><a href="#"><i class="fas fa-tshirt"></i> Fashion</a></li>
-            <li><a href="#"><i class="fas fa-laptop"></i> Computing</a></li>
-        </ul>
-    </div>
-
-    <div id="menu">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Menu</h2>
-            <ul>
-                <li><a href="#" data-category="women">Women</a></li>
-                <li><a href="#" data-category="men">Men</a></li>
-                <li><a href="#" data-category="children">Children</a></li>
-            </ul>
-        </div>
-    </div>
-
-   <div id="search-bar">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <input type="text" id="search-input" placeholder="Search products...">
-            <div id="search-results"></div>
-        </div>
-    </div>
-
-    <div id="cart-page">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Your Cart</h2>
-            <ul id="cart-items"></ul>
-            <p>Total: $<span id="cart-total">0.00</span></p>
-            <button id="checkout">Checkout</button>
-            <button id="close-cart">Close</button>
-        </div>
-    </div>
-
-    <div class="alert" id="alert">Added to cart</div>
-
-
-    <main>
-       <section class="hero">
-            <div class="hero-content">
-                <h1>Welcome to ABStore</h1>
-                <p>Discover the latest fashion trends and exclusive collections</p>
-                <a href="All products.html" class="cta-button">Shop Now</a>
-            </div>
-        </section>
+    <div class="container">
+        <h1>Welcome Back</h1>
         
-      <div class="animated-banner">
-            <div class="banner-content">
-                <span>🔥 Hot Deal: 50% off all summer items! 🌞</span>
-                <span>Free shipping on orders over $50! 🚚</span>
-                <span>New arrivals every week! Check them out! 👀</span>
+        <div id="auth-container">
+            <div class="tabs">
+                <button class="tab active" data-tab="signin">Sign In</button>
+                <button class="tab" data-tab="signup">Sign Up</button>
             </div>
-        </div>
-
-   <div class="section featured-products">
-    <h2>Featured Products</h2>
-    <div id="featured-products-grid" class="product-grid">
-        <!-- Featured products will be dynamically inserted here -->
-    </div>
-</div>
-
-    </main>
-    
-        <div id="menu">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Menu</h2>
-            <ul>
-                <li><a href="#" data-category="women">Women</a></li>
-                <li><a href="#" data-category="men">Men</a></li>
-                <li><a href="#" data-category="children">Children</a></li>
-            </ul>
-        </div>
-    </div>
-
-   <div id="search-bar">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <input type="text" id="search-input" placeholder="Search products...">
-            <div id="search-results"></div>
-        </div>
-    </div>
-
-    <div id="cart-page">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Your Cart</h2>
-            <ul id="cart-items"></ul>
-            <p>Total: $<span id="cart-total">0.00</span></p>
-            <button id="checkout">Checkout</button>
-            <button id="close-cart">Close</button>
-        </div>
-    </div>
-
-    <div class="alert" id="alert">Added to cart</div>
-    
- <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About ABStore</h3>
-                <p>Your premier fashion destination offering curated collections of trendy clothing, accessories, and lifestyle products. We believe in making fashion accessible to everyone.</p>
-                <div class="social-icons">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            
+            <div class="forms-wrapper">
+                <!-- Sign In Form -->
+                <div class="form-container active" id="signin-form">
+                    <div class="error-message" id="signin-error"></div>
+                    <div class="success-message" id="signin-success"></div>
+                    <form id="signin-form-element">
+                        <input type="email" class="input-field" placeholder="Email address" id="signin-email" required>
+                        <input type="password" class="input-field" placeholder="Password" id="signin-password" required>
+                        <button type="submit" class="continue-btn">Sign In</button>
+                    </form>
+                </div>
+                
+                <!-- Sign Up Form -->
+                <div class="form-container" id="signup-form">
+                    <div class="error-message" id="signup-error"></div>
+                    <div class="success-message" id="signup-success"></div>
+                    <form id="signup-form-element">
+                        <input type="email" class="input-field" placeholder="Email address" id="signup-email" required>
+                        <input type="password" class="input-field" placeholder="Password" id="signup-password" required>
+                        <input type="password" class="input-field" placeholder="Confirm Password" id="signup-confirm-password" required>
+                        <button type="submit" class="continue-btn">Sign Up</button>
+                    </form>
                 </div>
             </div>
-
-            <div class="footer-section">
-                <h3>Customer Service</h3>
-                <ul>
-                    <li><a href="#"><i class="fas fa-envelope"></i>Contact Us</a></li>
-                    <li><a href="#"><i class="fas fa-truck"></i>Shipping Information</a></li>
-                    <li><a href="#"><i class="fas fa-undo"></i>Returns & Exchanges</a></li>
-                    <li><a href="#"><i class="fas fa-question-circle"></i>FAQs</a></li>
-                    <li><a href="#"><i class="fas fa-tag"></i>Size Guide</a></li>
-                    <li><a href="#"><i class="fas fa-shield-alt"></i>Privacy Policy</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#"><i class="fas fa-tshirt"></i>New Arrivals</a></li>
-                    <li><a href="#"><i class="fas fa-percentage"></i>Special Offers</a></li>
-                    <li><a href="#"><i class="fas fa-gift"></i>Gift Cards</a></li>
-                    <li><a href="#"><i class="fas fa-store"></i>Store Locator</a></li>
-                    <li><a href="#"><i class="fas fa-heart"></i>Wishlist</a></li>
-                    <li><a href="#"><i class="fas fa-user"></i>My Account</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Newsletter</h3>
-                <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
-                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
-                </form>
-            </div>
+            
+            <p class="divider">or</p>
+            
+            <button class="google-btn" id="google-signin">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" width="20">
+                Continue with Google
+            </button>
         </div>
 
-        <div class="footer-bottom">
-            <div class="payment-methods">
-                <i class="fab fa-cc-visa"></i>
-                <i class="fab fa-cc-mastercard"></i>
-                <i class="fab fa-cc-amex"></i>
-                <i class="fab fa-cc-paypal"></i>
-                <i class="fab fa-cc-apple-pay"></i>
-            </div>
-            <p>&copy; 2024 ABStore. All rights reserved. Designed with <i class="fas fa-heart" style="color: #ff4141"></i> by abra.codes for fashion lovers</p>
+        <!-- User Info Section (shown after login) -->
+        <div class="user-info" id="user-info">
+            <h2>Welcome, <span id="user-email"></span></h2>
+            <button class="continue-btn logout-btn" id="logout-btn">Logout</button>
         </div>
-    </footer>
-    <script src="script2.js"></script>
+        
+        <p class="terms">
+            By continuing, you accept our 
+            <a href="#">Terms of Service</a>, 
+            <a href="#">Privacy Policy</a>, and 
+            <a href="#">Cookies Policy</a>.
+        </p>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-auth-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-firestore-compat.min.js"></script>
+
+    <script>
+        // Your Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDEvrtHxsIPBXzVro-WhtBwXO1Qvx9jKWk",
+  authDomain: "abstore-1e937.firebaseapp.com",
+  projectId: "abstore-1e937",
+  storageBucket: "abstore-1e937.firebasestorage.app",
+  messagingSenderId: "39833645659",
+  appId: "1:39833645659:web:98022d92e05556f37d057e",
+  measurementId: "G-XHGW8ZTGQZ"
+};
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // UI Elements
+        const authContainer = document.getElementById('auth-container');
+        const userInfo = document.getElementById('user-info');
+        const userEmail = document.getElementById('user-email');
+        const signupForm = document.getElementById('signup-form-element');
+        const signinForm = document.getElementById('signin-form-element');
+        const googleSignIn = document.getElementById('google-signin');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        // Error and Success Messages
+        const signupError = document.getElementById('signup-error');
+        const signinError = document.getElementById('signin-error');
+        const signupSuccess = document.getElementById('signup-success');
+        const signinSuccess = document.getElementById('signin-success');
+
+        // Auth state observer
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in
+                authContainer.style.display = 'none';
+                userInfo.style.display = 'block';
+                userEmail.textContent = user.email;
+
+                // Store user data in Firestore
+                db.collection('users').doc(user.uid).set({
+                    email: user.email,
+                    lastLogin: new Date()
+                }, { merge: true });
+            } else {
+                // User is signed out
+                authContainer.style.display = 'block';
+                userInfo.style.display = 'none';
+                userEmail.textContent = '';
+            }
+        });
+
+        // Sign Up
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            // Reset messages
+            signupError.style.display = 'none';
+            signupSuccess.style.display = 'none';
+
+            if (password !== confirmPassword) {
+                signupError.textContent = 'Passwords do not match';
+                signupError.style.display = 'block';
+                return;
+            }
+
+            try {
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                signupSuccess.textContent = 'Account created successfully!';
+                signupSuccess.style.display = 'block';
+                signupForm.reset();
+
+                // Store additional user data
+                await db.collection('users').doc(userCredential.user.uid).set({
+                    email: email,
+                    createdAt: new Date(),
+                    lastLogin: new Date()
+                });
+            } catch (error) {
+                signupError.textContent = error.message;
+                signupError.style.display = 'block';
+            }
+        });
+
+        // Sign In
+        signinForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+
+            // Reset messages
+            signinError.style.display = 'none';
+            signinSuccess.style.display = 'none';
+
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+                signinSuccess.textContent = 'Signed in successfully!';
+                signinSuccess.style.display = 'block';
+                signinForm.reset();
+            } catch (error) {
+                signinError.textContent = error.message;
+                signinError.style.display = 'block';
+            }
+        });
+
+        // Google Sign In
+        googleSignIn.addEventListener('click', async () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            try {
+                const result = await auth.signInWithPopup(provider);
+                // Store user data
+                await db.collection('users').doc(result.user.uid).set({
+                    email: result.user.email,
+                    displayName: result.user.displayName,
+                    lastLogin: new Date()
+                }, { merge: true });
+            } catch (error) {
+                signinError.textContent = error.message;
+                signinError.style.display = 'block';
+            }
+        });
+
+        // Logout
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await auth.signOut();
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+
+        // Tab Switching Logic (previous code)
+        const tabs = document.querySelectorAll('.tab');
+        const forms = document.querySelectorAll('.form-container');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(form => {
+                    form.classList.remove('active');
+                    form.classList.add('previous');
+                });
+                
+                tab.classList.add('active');
+                const targetForm = document.getElementById(`${tab.dataset.tab}-form`);
+                targetForm.classList.add('active');
+                targetForm.classList.remove('previous');
+            });
+        });
+    </script>
 </body>
 </html>
