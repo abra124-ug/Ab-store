@@ -217,86 +217,13 @@
         .logout-btn:hover {
             background: #cc0000;
         }
-
-        .forgot-password {
-            text-align: right;
-            margin-bottom: 15px;
-        }
-
-        .forgot-password a {
-            color: #00A884;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
-
-        .verification-banner {
-            background: #fff3cd;
-            color: #856404;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            display: none;
-        }
-
-        .verification-banner button {
-            background: #856404;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 400px;
-        }
-
-        .close-modal {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        /* Add all previous CSS here */
-    </style>
+    </style>  
 </head>
 <body>
     <div class="container">
         <h1>Welcome Back</h1>
         
         <div id="auth-container">
-            <!-- Verification Banner -->
-            <div class="verification-banner" id="verification-banner">
-                Please verify your email address.
-                <button id="resend-verification">Resend Email</button>
-            </div>
-
             <div class="tabs">
                 <button class="tab active" data-tab="signin">Sign In</button>
                 <button class="tab" data-tab="signup">Sign Up</button>
@@ -310,9 +237,6 @@
                     <form id="signin-form-element">
                         <input type="email" class="input-field" placeholder="Email address" id="signin-email" required>
                         <input type="password" class="input-field" placeholder="Password" id="signin-password" required>
-                        <div class="forgot-password">
-                            <a href="#" id="forgot-password-link">Forgot Password?</a>
-                        </div>
                         <button type="submit" class="continue-btn">Sign In</button>
                     </form>
                 </div>
@@ -338,38 +262,28 @@
             </button>
         </div>
 
-        </div>
-
-        <!-- User Info Section -->
+        <!-- User Info Section (shown after login) -->
         <div class="user-info" id="user-info">
             <h2>Welcome, <span id="user-email"></span></h2>
             <button class="continue-btn logout-btn" id="logout-btn">Logout</button>
         </div>
-    </div>
-
-    <!-- Password Reset Modal -->
-    <div class="modal" id="reset-password-modal">
-        <div class="modal-content">
-            <span class="close-modal" id="close-modal">&times;</span>
-            <h2>Reset Password</h2>
-            <div class="error-message" id="reset-error"></div>
-            <div class="success-message" id="reset-success"></div>
-            <form id="reset-password-form">
-                <input type="email" class="input-field" placeholder="Enter your email" id="reset-email" required>
-                <button type="submit" class="continue-btn">Send Reset Link</button>
-            </form>
-        </div>
+        
+        <p class="terms">
+            By continuing, you accept our 
+            <a href="#">Terms of Service</a>, 
+            <a href="#">Privacy Policy</a>, and 
+            <a href="#">Cookies Policy</a>.
+        </p>
     </div>
 
     <!-- Firebase SDKs -->
-      <!-- Firebase SDKs -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-app-compat.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-auth-compat.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-firestore-compat.min.js"></script>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-auth-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-firestore-compat.min.js"></script>
 
     <script>
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        // Your Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDEvrtHxsIPBXzVro-WhtBwXO1Qvx9jKWk",
   authDomain: "abstore-1e937.firebaseapp.com",
@@ -400,51 +314,35 @@ const firebaseConfig = {
         const signupSuccess = document.getElementById('signup-success');
         const signinSuccess = document.getElementById('signin-success');
 
-        // Additional UI Elements
-        const verificationBanner = document.getElementById('verification-banner');
-        const resendVerificationBtn = document.getElementById('resend-verification');
-        const resetPasswordModal = document.getElementById('reset-password-modal');
-        const resetPasswordForm = document.getElementById('reset-password-form');
-        const closeModalBtn = document.getElementById('close-modal');
-        const forgotPasswordLink = document.getElementById('forgot-password-link');
-        const resetError = document.getElementById('reset-error');
-        const resetSuccess = document.getElementById('reset-success');
-
-        // Enhanced Auth State Observer
-        auth.onAuthStateChanged(async (user) => {
+        // Auth state observer
+        auth.onAuthStateChanged((user) => {
             if (user) {
+                // User is signed in
                 authContainer.style.display = 'none';
                 userInfo.style.display = 'block';
                 userEmail.textContent = user.email;
 
-                // Check email verification status
-                if (!user.emailVerified) {
-                    verificationBanner.style.display = 'block';
-                } else {
-                    verificationBanner.style.display = 'none';
-                }
-
-                // Update user data
-                await db.collection('users').doc(user.uid).set({
+                // Store user data in Firestore
+                db.collection('users').doc(user.uid).set({
                     email: user.email,
-                    emailVerified: user.emailVerified,
                     lastLogin: new Date()
                 }, { merge: true });
             } else {
+                // User is signed out
                 authContainer.style.display = 'block';
                 userInfo.style.display = 'none';
                 userEmail.textContent = '';
-                verificationBanner.style.display = 'none';
             }
         });
 
-        // Enhanced Sign Up with Email Verification
+        // Sign Up
         signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('signup-email').value;
             const password = document.getElementById('signup-password').value;
             const confirmPassword = document.getElementById('signup-confirm-password').value;
 
+            // Reset messages
             signupError.style.display = 'none';
             signupSuccess.style.display = 'none';
 
@@ -456,17 +354,13 @@ const firebaseConfig = {
 
             try {
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-                
-                // Send verification email
-                await userCredential.user.sendEmailVerification();
-                
-                signupSuccess.textContent = 'Account created successfully! Please check your email for verification.';
+                signupSuccess.textContent = 'Account created successfully!';
                 signupSuccess.style.display = 'block';
                 signupForm.reset();
 
+                // Store additional user data
                 await db.collection('users').doc(userCredential.user.uid).set({
                     email: email,
-                    emailVerified: false,
                     createdAt: new Date(),
                     lastLogin: new Date()
                 });
@@ -476,78 +370,19 @@ const firebaseConfig = {
             }
         });
 
-        // Resend Verification Email
-        resendVerificationBtn.addEventListener('click', async () => {
-            const user = auth.currentUser;
-            if (user && !user.emailVerified) {
-                try {
-                    await user.sendEmailVerification();
-                    alert('Verification email sent! Please check your inbox.');
-                } catch (error) {
-                    alert('Error sending verification email: ' + error.message);
-                }
-            }
-        });
-
-        // Password Reset Modal Handlers
-        forgotPasswordLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            resetPasswordModal.style.display = 'block';
-            resetPasswordForm.reset();
-            resetError.style.display = 'none';
-            resetSuccess.style.display = 'none';
-        });
-
-        closeModalBtn.addEventListener('click', () => {
-            resetPasswordModal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === resetPasswordModal) {
-                resetPasswordModal.style.display = 'none';
-            }
-        });
-
-        // Password Reset Handler
-        resetPasswordForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('reset-email').value;
-
-            resetError.style.display = 'none';
-            resetSuccess.style.display = 'none';
-
-            try {
-                await auth.sendPasswordResetEmail(email);
-                resetSuccess.textContent = 'Password reset email sent! Please check your inbox.';
-                resetSuccess.style.display = 'block';
-                resetPasswordForm.reset();
-                
-                // Close modal after 3 seconds
-                setTimeout(() => {
-                    resetPasswordModal.style.display = 'none';
-                }, 3000);
-            } catch (error) {
-                resetError.textContent = error.message;
-                resetError.style.display = 'block';
-            }
-        });
-
-        // Enhanced Sign In to Check Email Verification
+        // Sign In
         signinForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('signin-email').value;
             const password = document.getElementById('signin-password').value;
 
+            // Reset messages
             signinError.style.display = 'none';
             signinSuccess.style.display = 'none';
 
             try {
-                const userCredential = await auth.signInWithEmailAndPassword(email, password);
-                if (!userCredential.user.emailVerified) {
-                    signinSuccess.textContent = 'Signed in successfully! Please verify your email.';
-                } else {
-                    signinSuccess.textContent = 'Signed in successfully!';
-                }
+                await auth.signInWithEmailAndPassword(email, password);
+                signinSuccess.textContent = 'Signed in successfully!';
                 signinSuccess.style.display = 'block';
                 signinForm.reset();
             } catch (error) {
@@ -556,7 +391,7 @@ const firebaseConfig = {
             }
         });
 
-        // Previous code for Google Sign In, Logout, and Tab Switching remains the same
+        // Google Sign In
         googleSignIn.addEventListener('click', async () => {
             const provider = new firebase.auth.GoogleAuthProvider();
             try {
@@ -600,7 +435,6 @@ const firebaseConfig = {
                 targetForm.classList.remove('previous');
             });
         });
-    </script>
     </script>
 </body>
 </html>
