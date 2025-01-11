@@ -644,22 +644,34 @@ const firebaseConfig = {
             }
         });
 
-        // Delete account
-        deleteAccountBtn.addEventListener('click', async () => {
-            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-                const user = auth.currentUser;
-                if (user) {
-                    try {
-                        // Delete user data from Firestore
-                        await db.collection('users').doc(user.uid).delete();
-                        // Delete user account
-                        await user.delete();
-                    } catch (error) {
-                        console.error('Error deleting account:', error);
-                    }
+// Delete account with proper error handling and re-authentication
+deleteAccountBtn.addEventListener('click', async () => {
+    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+        const user = auth.currentUser;
+        if (user) {
+            try {
+                // First delete user data from Firestore
+                await db.collection('users').doc(user.uid).delete();
+                
+                // Then attempt to delete the user account
+                await user.delete();
+                
+                // Show success message
+                alert('Your account has been successfully deleted.');
+            } catch (error) {
+                // Check if the error is due to requiring recent authentication
+                if (error.code === 'auth/requires-recent-login') {
+                    alert('For security reasons, please sign out and sign in again before deleting your account.');
+                    // Sign out the user
+                    await auth.signOut();
+                } else {
+                    alert('Error deleting account: ' + error.message);
+                    console.error('Error deleting account:', error);
                 }
             }
-        });
+        }
+    }
+});
         
         // Password strength checker
         function checkPasswordStrength(password) {
