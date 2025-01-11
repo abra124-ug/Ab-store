@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication Interface</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         * {
             margin: 0;
@@ -217,6 +218,114 @@
         .logout-btn:hover {
             background: #cc0000;
         }
+        
+        .account-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #00A884;
+            transition: transform 0.3s ease;
+        }
+
+        .account-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .profile-content {
+            position: relative;
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .profile-section {
+            margin-bottom: 25px;
+        }
+
+        .profile-section h3 {
+            color: #005F4E;
+            margin-bottom: 15px;
+        }
+
+        .profile-form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .profile-links {
+            display: grid;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .profile-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .profile-link:hover {
+            background: #e5e5e5;
+        }
+
+        .danger-zone {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .danger-btn {
+            background: #ff3333;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .danger-btn:hover {
+            background: #cc0000;
+        }
+
+        .setup-complete {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #f0f9f7;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
     </style>  
 </head>
 <body>
@@ -263,10 +372,45 @@
         </div>
 
         <!-- User Info Section (shown after login) -->
-        <div class="user-info" id="user-info">
-            <h2>Welcome, <span id="user-email"></span></h2>
-            <button class="continue-btn logout-btn" id="logout-btn">Logout</button>
+    <div id="account-section" style="display: none;">
+        <i class="account-icon" data-lucide="user-circle" id="account-icon"></i>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="profile-modal" id="profile-modal">
+        <div class="profile-content">
+            <i class="close-modal" data-lucide="x" id="close-modal"></i>
+            
+            <div class="setup-complete" id="setup-complete">
+                Profile setup complete! You can always edit your information later.
+            </div>
+
+            <div class="profile-section">
+                <h3>Profile Information</h3>
+                <form class="profile-form" id="profile-form">
+                    <input type="text" class="input-field" id="display-name" placeholder="Display Name">
+                    <input type="text" class="input-field" id="location" placeholder="Location">
+                    <button type="submit" class="continue-btn">Save Profile</button>
+                </form>
+            </div>
+
+            <div class="profile-links">
+                <a href="#" class="profile-link" id="cart-link">
+                    <i data-lucide="shopping-cart"></i>
+                    View Cart
+                </a>
+                <a href="#" class="profile-link" id="orders-link">
+                    <i data-lucide="package"></i>
+                    Order History
+                </a>
+            </div>
+
+            <div class="danger-zone">
+                <button class="continue-btn logout-btn" id="logout-btn">Logout</button>
+                <button class="danger-btn" id="delete-account-btn">Delete Account</button>
+            </div>
         </div>
+    </div>
         
         <p class="terms">
             By continuing, you accept our 
@@ -298,6 +442,7 @@ const firebaseConfig = {
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
+        lucide.createIcons();
 
         // UI Elements
         const authContainer = document.getElementById('auth-container');
@@ -307,6 +452,14 @@ const firebaseConfig = {
         const signinForm = document.getElementById('signin-form-element');
         const googleSignIn = document.getElementById('google-signin');
         const logoutBtn = document.getElementById('logout-btn');
+        // Additional JavaScript for profile management
+        const accountIcon = document.getElementById('account-icon');
+        const profileModal = document.getElementById('profile-modal');
+        const closeModal = document.getElementById('close-modal');
+        const profileForm = document.getElementById('profile-form');
+        const deleteAccountBtn = document.getElementById('delete-account-btn');
+        const accountSection = document.getElementById('account-section');
+        const setupComplete = document.getElementById('setup-complete');
 
         // Error and Success Messages
         const signupError = document.getElementById('signup-error');
@@ -314,27 +467,33 @@ const firebaseConfig = {
         const signupSuccess = document.getElementById('signup-success');
         const signinSuccess = document.getElementById('signin-success');
 
-        // Auth state observer
-        auth.onAuthStateChanged((user) => {
+        // Modified auth state observer
+        auth.onAuthStateChanged(async (user) => {
             if (user) {
-                // User is signed in
                 authContainer.style.display = 'none';
-                userInfo.style.display = 'block';
-                userEmail.textContent = user.email;
+                accountSection.style.display = 'block';
 
-                // Store user data in Firestore
-                db.collection('users').doc(user.uid).set({
-                    email: user.email,
-                    lastLogin: new Date()
-                }, { merge: true });
+                // Check if profile exists
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                if (userDoc.exists) {
+                    const userData = userDoc.data();
+                    if (userData.displayName) {
+                        document.getElementById('display-name').value = userData.displayName;
+                    }
+                    if (userData.location) {
+                        document.getElementById('location').value = userData.location;
+                    }
+                    if (userData.profileComplete) {
+                        setupComplete.style.display = 'block';
+                    }
+                }
             } else {
-                // User is signed out
                 authContainer.style.display = 'block';
-                userInfo.style.display = 'none';
-                userEmail.textContent = '';
+                accountSection.style.display = 'none';
+                profileModal.style.display = 'none';
             }
         });
-
+        
         // Sign Up
         signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -434,6 +593,57 @@ const firebaseConfig = {
                 targetForm.classList.add('active');
                 targetForm.classList.remove('previous');
             });
+        });
+        
+                // Modal controls
+        accountIcon.addEventListener('click', () => {
+            profileModal.style.display = 'block';
+        });
+
+        closeModal.addEventListener('click', () => {
+            profileModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === profileModal) {
+                profileModal.style.display = 'none';
+            }
+        });
+
+        // Profile form submission
+        profileForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const user = auth.currentUser;
+            if (user) {
+                try {
+                    await db.collection('users').doc(user.uid).update({
+                        displayName: document.getElementById('display-name').value,
+                        location: document.getElementById('location').value,
+                        profileComplete: true,
+                        updatedAt: new Date()
+                    });
+                    setupComplete.style.display = 'block';
+                } catch (error) {
+                    console.error('Error updating profile:', error);
+                }
+            }
+        });
+
+        // Delete account
+        deleteAccountBtn.addEventListener('click', async () => {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                const user = auth.currentUser;
+                if (user) {
+                    try {
+                        // Delete user data from Firestore
+                        await db.collection('users').doc(user.uid).delete();
+                        // Delete user account
+                        await user.delete();
+                    } catch (error) {
+                        console.error('Error deleting account:', error);
+                    }
+                }
+            }
         });
     </script>
 </body>
