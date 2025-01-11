@@ -311,6 +311,7 @@
             padding: 12px;
             border-radius: 25px;
             cursor: pointer;
+            margin-top: 15px;
             transition: background 0.3s ease;
         }
 
@@ -326,6 +327,19 @@
             border-radius: 8px;
             margin-bottom: 20px;
         }
+        
+                /* Password strength indicator */
+        .password-strength {
+            height: 4px;
+            margin-top: -50px;
+            margin-bottom: 25px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .strength-weak { background: #ff4444; width: 33%; }
+        .strength-medium { background: #ffbb33; width: 66%; }
+        .strength-strong { background: #00C851; width: 100%; }
     </style>  
 </head>
 <body>
@@ -359,6 +373,7 @@
                         <input type="password" class="input-field" placeholder="Password" id="signup-password" required>
                         <input type="password" class="input-field" placeholder="Confirm Password" id="signup-confirm-password" required>
                         <button type="submit" class="continue-btn">Sign Up</button>
+                    <div class="password-strength" id="password-strength"></div>        
                     </form>
                 </div>
             </div>
@@ -644,6 +659,33 @@ const firebaseConfig = {
                     }
                 }
             }
+        });
+        
+        // Password strength checker
+        function checkPasswordStrength(password) {
+            const strength = {
+                length: password.length >= 8,
+                hasUpperCase: /[A-Z]/.test(password),
+                hasLowerCase: /[a-z]/.test(password),
+                hasNumber: /\d/.test(password),
+                hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+            };
+
+            const strengthBar = document.getElementById('password-strength');
+            const passedChecks = Object.values(strength).filter(Boolean).length;
+
+            if (passedChecks <= 2) {
+                strengthBar.className = 'password-strength strength-weak';
+            } else if (passedChecks <= 4) {
+                strengthBar.className = 'password-strength strength-medium';
+            } else {
+                strengthBar.className = 'password-strength strength-strong';
+            }
+        }
+        
+         // Password input enhancement
+        document.getElementById('signup-password').addEventListener('input', (e) => {
+            checkPasswordStrength(e.target.value);
         });
     </script>
 </body>
