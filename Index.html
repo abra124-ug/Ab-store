@@ -340,6 +340,49 @@
         .strength-weak { background: #ff4444; width: 33%; }
         .strength-medium { background: #ffbb33; width: 66%; }
         .strength-strong { background: #00C851; width: 100%; }
+        
+    .welcome-content {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .welcome-content h2 {
+        color: #00A884;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .quick-nav-button {
+        width: 100%;
+        padding: 12px;
+        background: #00A884;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .quick-nav-button:hover {
+        background: #005F4E;
+        transform: translateY(-2px);
+    }
+
+    .quick-nav-button:active {
+        transform: translateY(0);
+    }
+
+    .quick-nav-button.loading {
+        opacity: 0.7;
+        cursor: wait;
+    }
     </style>  
 </head>
 <body>
@@ -389,6 +432,16 @@
         <!-- User Info Section (shown after login) -->
     <div id="account-section" style="display: none;">
         <i class="account-icon" data-lucide="user-circle" id="account-icon"></i>
+        
+          <!-- Add welcome message and button -->
+    <div class="welcome-content">
+        <h2>Welcome to Your Account</h2>
+        <button class="quick-nav-button" onclick="navigateToLanding()">
+            Go to Landing Page
+            <i data-lucide="arrow-right"></i>
+        </button>
+    </div>
+        
     </div>
 
     <!-- Profile Modal -->
@@ -644,6 +697,7 @@ const firebaseConfig = {
             }
         });
 
+        // Delete account
 // Delete account with proper error handling and re-authentication
 deleteAccountBtn.addEventListener('click', async () => {
     if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
@@ -699,6 +753,31 @@ deleteAccountBtn.addEventListener('click', async () => {
         document.getElementById('signup-password').addEventListener('input', (e) => {
             checkPasswordStrength(e.target.value);
         });
+        
+      function navigateToLanding() {
+        const button = document.querySelector('.quick-nav-button');
+        button.classList.add('loading');
+        button.innerHTML = 'Loading... <i data-lucide="loader" class="animate-spin"></i>';
+        lucide.createIcons(); // Refresh icons
+
+        // Preload the landing page
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = 'Landing page.html';
+        document.head.appendChild(link);
+
+        // Navigate after a brief delay to allow prefetch
+        setTimeout(() => {
+            window.location.href = 'Landing page.html';
+        }, 100);
+
+        // Fallback in case the navigation doesn't happen
+        setTimeout(() => {
+            button.classList.remove('loading');
+            button.innerHTML = 'Go to Landing Page <i data-lucide="arrow-right"></i>';
+            lucide.createIcons(); // Refresh icons
+        }, 3000);
+    }
     </script>
 </body>
 </html>
