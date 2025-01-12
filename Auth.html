@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstore|Authentication</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome Back</h1>
+        
+        <div id="auth-container">
+            <div class="tabs">
+                <button class="tab active" data-tab="signin">Sign In</button>
+                <button class="tab" data-tab="signup">Sign Up</button>
+            </div>
+            
+            <div class="forms-wrapper">
+                <!-- Sign In Form -->
+                <div class="form-container active" id="signin-form">
+                    <div class="error-message" id="signin-error"></div>
+                    <div class="success-message" id="signin-success"></div>
+                    <form id="signin-form-element">
+                        <input type="email" class="input-field" placeholder="Email address" id="signin-email" required>
+                        <input type="password" class="input-field" placeholder="Password" id="signin-password" required>
+                        <button type="submit" class="continue-btn">Sign In</button>
+                    </form>
+                </div>
+                
+                <!-- Sign Up Form -->
+                <div class="form-container" id="signup-form">
+                    <div class="error-message" id="signup-error"></div>
+                    <div class="success-message" id="signup-success"></div>
+                    <form id="signup-form-element">
+                        <input type="email" class="input-field" placeholder="Email address" id="signup-email" required>
+                        <input type="password" class="input-field" placeholder="Password" id="signup-password" required>
+                        <input type="password" class="input-field" placeholder="Confirm Password" id="signup-confirm-password" required>
+                        <button type="submit" class="continue-btn">Sign Up</button>
+                    <div class="password-strength" id="password-strength"></div>        
+                    </form>
+                </div>
+            </div>
+            
+            <p class="divider">or</p>
+            
+            <button class="google-btn" id="google-signin">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" width="20">
+                Continue with Google
+            </button>
+        </div>
+
+        <!-- User Info Section (shown after login) -->
+    <div id="account-section" style="display: none;">
+        <i class="account-icon" data-lucide="user-circle" id="account-icon"></i>
+        
+          <!-- Add welcome message and button -->
+    <div class="welcome-content">
+        <button class="quick-nav-button" onclick="navigateToLanding()">
+            Go to Landing Page
+            <i data-lucide="arrow-right"></i>
+        </button>
+    </div>
+        
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="profile-modal" id="profile-modal">
+        <div class="profile-content">
+            <i class="close-modal" data-lucide="x" id="close-modal"></i>
+            
+            <div class="setup-complete" id="setup-complete">
+                Profile setup complete! You can always edit your information later.
+            </div>
+
+            <div class="profile-section">
+                <h3>Profile Information</h3>
+                <form class="profile-form" id="profile-form">
+                    <input type="text" class="input-field" id="display-name" placeholder="Display Name">
+                    <input type="text" class="input-field" id="location" placeholder="Location">
+                    <button type="submit" class="continue-btn">Save Profile</button>
+                </form>
+            </div>
+
+            <div class="profile-links">
+                <a href="#" class="profile-link" id="cart-link">
+                    <i data-lucide="shopping-cart"></i>
+                    View Cart
+                </a>
+                <a href="#" class="profile-link" id="orders-link">
+                    <i data-lucide="package"></i>
+                    Order History
+                </a>
+            </div>
+
+            <div class="danger-zone">
+                <button class="continue-btn logout-btn" id="logout-btn">Logout</button>
+                <button class="danger-btn" id="delete-account-btn">Delete Account</button>
+            </div>
+        </div>
+    </div>
+        
+        <p class="terms">
+            By continuing, you accept our 
+            <a href="#">Terms of Service</a>, 
+            <a href="#">Privacy Policy</a>, and 
+            <a href="#">Cookies Policy</a>.
+        </p>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-auth-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-firestore-compat.min.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>
