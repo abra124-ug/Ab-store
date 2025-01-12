@@ -3,781 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authentication Interface</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>ABStore - Loading</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #00A884, #005F4E);
-            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #059669, #064e3b);
         }
 
         .container {
             width: 100%;
-            max-width: 400px;
-            padding: 25px;
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 28rem;
+            padding: 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #005F4E;
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .tab {
-            flex: 1;
-            padding: 10px 0;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            color: #777;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .tab.active {
-            color: #00A884;
-        }
-
-        .tab::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: #00A884;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .tab.active::after {
-            transform: scaleX(1);
-        }
-
-        .forms-wrapper {
-            position: relative;
-            height: 200px;
-        }
-
-        .form-container {
-            position: absolute;
-            width: 100%;
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 0.3em;
+            margin-bottom: 2rem;
             opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.5s ease;
-            visibility: hidden;
+            animation: fadeIn 1s ease-out forwards;
+            font-family: "Caveat", serif;
+            font-optical-sizing: auto;
         }
 
-        .form-container.active {
-            opacity: 1;
-            transform: translateX(0);
-            visibility: visible;
-        }
-
-        .form-container.previous {
-            transform: translateX(-100%);
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.3s ease;
-        }
-
-        .input-field:focus {
-            border-color: #00A884;
-            outline: none;
-        }
-
-        .continue-btn {
-            width: 100%;
-            padding: 12px;
-            background: #00A884;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .continue-btn:hover {
-            background: #005F4E;
-            transform: translateY(-2px);
-        }
-
-        .continue-btn:active {
-            transform: translateY(0);
-        }
-
-        .divider {
-            margin: 20px 0;
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        .google-btn {
-            width: 100%;
-            padding: 12px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 25px;
+        .icons-container {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            color: #555;
-            transition: all 0.3s ease;
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
-        .google-btn:hover {
-            background: #f7f7f7;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .terms {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #555;
-        }
-
-        .terms a {
-            color: #00A884;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .terms a:hover {
-            color: #005F4E;
-            text-decoration: underline;
-        }
-
-        .error-message {
-            color: #ff3333;
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: none;
-        }
-
-        .success-message {
-            color: #00A884;
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: none;
-        }
-
-        .user-info {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background: #f5f5f5;
-            border-radius: 8px;
-        }
-
-        .logout-btn {
-            background: #ff3333;
-            margin-top: 10px;
-        }
-
-        .logout-btn:hover {
-            background: #cc0000;
-        }
-        
-        .account-icon {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: #00A884;
-            transition: transform 0.3s ease;
-        }
-
-        .account-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .profile-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-
-        .profile-content {
-            position: relative;
-            background: white;
-            width: 90%;
-            max-width: 500px;
-            margin: 50px auto;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            cursor: pointer;
-            color: #777;
-        }
-
-        .profile-section {
-            margin-bottom: 25px;
-        }
-
-        .profile-section h3 {
-            color: #005F4E;
-            margin-bottom: 15px;
-        }
-
-        .profile-form {
-            display: grid;
-            gap: 15px;
-        }
-
-        .profile-links {
-            display: grid;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .profile-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            color: #333;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-
-        .profile-link:hover {
-            background: #e5e5e5;
-        }
-
-        .danger-zone {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-        }
-
-        .danger-btn {
-            background: #ff3333;
+        .icon {
+            width: 2rem;
+            height: 2rem;
             color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 25px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: background 0.3s ease;
         }
 
-        .danger-btn:hover {
-            background: #cc0000;
+        .pulse {
+            animation: pulse 2s infinite;
         }
 
-        .setup-complete {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            background: #f0f9f7;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        
-                /* Password strength indicator */
-        .password-strength {
-            height: 4px;
-            margin-top: -50px;
-            margin-bottom: 25px;
-            border-radius: 2px;
-            transition: all 0.3s ease;
+        .progress-container {
+            width: 100%;
+            height: 0.375rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 9999px;
+            overflow: hidden;
+            margin: 1rem 0;
         }
 
-        .strength-weak { background: #ff4444; width: 33%; }
-        .strength-medium { background: #ffbb33; width: 66%; }
-        .strength-strong { background: #00C851; width: 100%; }
-        
-    .welcome-content {
-        margin-top: 40px;
-        text-align: center;
-    }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: white;
+            border-radius: 9999px;
+            transition: width 0.3s ease-out;
+        }
 
-    .welcome-content h2 {
-        color: #00A884;
-        margin-bottom: 20px;
-        font-size: 24px;
-    }
+        .loading-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
 
-    .quick-nav-button {
-        width: 100%;
-        padding: 12px;
-        background: #00A884;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.3s, transform 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 20px;
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .quick-nav-button:hover {
-        background: #005F4E;
-        transform: translateY(-2px);
-    }
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.9);
+            }
+        }
 
-    .quick-nav-button:active {
-        transform: translateY(0);
-    }
-
-    .quick-nav-button.loading {
-        opacity: 0.7;
-        cursor: wait;
-    }
-    </style>  
+        .icon:nth-child(1) { animation-delay: 0s; }
+        .icon:nth-child(2) { animation-delay: 0.2s; }
+        .icon:nth-child(3) { animation-delay: 0.4s; }
+        .icon:nth-child(4) { animation-delay: 0.6s; }
+        .icon:nth-child(5) { animation-delay: 0.8s; }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome Back</h1>
+        <h1 class="logo">Abstore</h1>
         
-        <div id="auth-container">
-            <div class="tabs">
-                <button class="tab active" data-tab="signin">Sign In</button>
-                <button class="tab" data-tab="signup">Sign Up</button>
-            </div>
+        <div class="icons-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
             
-            <div class="forms-wrapper">
-                <!-- Sign In Form -->
-                <div class="form-container active" id="signin-form">
-                    <div class="error-message" id="signin-error"></div>
-                    <div class="success-message" id="signin-success"></div>
-                    <form id="signin-form-element">
-                        <input type="email" class="input-field" placeholder="Email address" id="signin-email" required>
-                        <input type="password" class="input-field" placeholder="Password" id="signin-password" required>
-                        <button type="submit" class="continue-btn">Sign In</button>
-                    </form>
-                </div>
-                
-                <!-- Sign Up Form -->
-                <div class="form-container" id="signup-form">
-                    <div class="error-message" id="signup-error"></div>
-                    <div class="success-message" id="signup-success"></div>
-                    <form id="signup-form-element">
-                        <input type="email" class="input-field" placeholder="Email address" id="signup-email" required>
-                        <input type="password" class="input-field" placeholder="Password" id="signup-password" required>
-                        <input type="password" class="input-field" placeholder="Confirm Password" id="signup-confirm-password" required>
-                        <button type="submit" class="continue-btn">Sign Up</button>
-                    <div class="password-strength" id="password-strength"></div>        
-                    </form>
-                </div>
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
             
-            <p class="divider">or</p>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
             
-            <button class="google-btn" id="google-signin">
-                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" width="20">
-                Continue with Google
-            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+            </svg>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+            </svg>
         </div>
 
-        <!-- User Info Section (shown after login) -->
-    <div id="account-section" style="display: none;">
-        <i class="account-icon" data-lucide="user-circle" id="account-icon"></i>
-        
-          <!-- Add welcome message and button -->
-    <div class="welcome-content">
-        <h2>Welcome to Your Account</h2>
-        <button class="quick-nav-button" onclick="navigateToLanding()">
-            Go to Landing Page
-            <i data-lucide="arrow-right"></i>
-        </button>
-    </div>
-        
-    </div>
-
-    <!-- Profile Modal -->
-    <div class="profile-modal" id="profile-modal">
-        <div class="profile-content">
-            <i class="close-modal" data-lucide="x" id="close-modal"></i>
-            
-            <div class="setup-complete" id="setup-complete">
-                Profile setup complete! You can always edit your information later.
-            </div>
-
-            <div class="profile-section">
-                <h3>Profile Information</h3>
-                <form class="profile-form" id="profile-form">
-                    <input type="text" class="input-field" id="display-name" placeholder="Display Name">
-                    <input type="text" class="input-field" id="location" placeholder="Location">
-                    <button type="submit" class="continue-btn">Save Profile</button>
-                </form>
-            </div>
-
-            <div class="profile-links">
-                <a href="#" class="profile-link" id="cart-link">
-                    <i data-lucide="shopping-cart"></i>
-                    View Cart
-                </a>
-                <a href="#" class="profile-link" id="orders-link">
-                    <i data-lucide="package"></i>
-                    Order History
-                </a>
-            </div>
-
-            <div class="danger-zone">
-                <button class="continue-btn logout-btn" id="logout-btn">Logout</button>
-                <button class="danger-btn" id="delete-account-btn">Delete Account</button>
-            </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
         </div>
-    </div>
-        
-        <p class="terms">
-            By continuing, you accept our 
-            <a href="#">Terms of Service</a>, 
-            <a href="#">Privacy Policy</a>, and 
-            <a href="#">Cookies Policy</a>.
-        </p>
-    </div>
 
-    <!-- Firebase SDKs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-app-compat.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-auth-compat.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-firestore-compat.min.js"></script>
+        <p class="loading-text">Loading your shopping experience...</p>
+    </div>
 
     <script>
-        // Your Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDEvrtHxsIPBXzVro-WhtBwXO1Qvx9jKWk",
-  authDomain: "abstore-1e937.firebaseapp.com",
-  projectId: "abstore-1e937",
-  storageBucket: "abstore-1e937.firebasestorage.app",
-  messagingSenderId: "39833645659",
-  appId: "1:39833645659:web:98022d92e05556f37d057e",
-  measurementId: "G-XHGW8ZTGQZ"
-};
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progressBar');
+            const duration = 5000; // 5 seconds
+            const interval = 50;
+            const steps = duration / interval;
+            let progress = 0;
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-        lucide.createIcons();
-
-        // UI Elements
-        const authContainer = document.getElementById('auth-container');
-        const userInfo = document.getElementById('user-info');
-        const userEmail = document.getElementById('user-email');
-        const signupForm = document.getElementById('signup-form-element');
-        const signinForm = document.getElementById('signin-form-element');
-        const googleSignIn = document.getElementById('google-signin');
-        const logoutBtn = document.getElementById('logout-btn');
-        // Additional JavaScript for profile management
-        const accountIcon = document.getElementById('account-icon');
-        const profileModal = document.getElementById('profile-modal');
-        const closeModal = document.getElementById('close-modal');
-        const profileForm = document.getElementById('profile-form');
-        const deleteAccountBtn = document.getElementById('delete-account-btn');
-        const accountSection = document.getElementById('account-section');
-        const setupComplete = document.getElementById('setup-complete');
-
-        // Error and Success Messages
-        const signupError = document.getElementById('signup-error');
-        const signinError = document.getElementById('signin-error');
-        const signupSuccess = document.getElementById('signup-success');
-        const signinSuccess = document.getElementById('signin-success');
-
-        // Modified auth state observer
-        auth.onAuthStateChanged(async (user) => {
-            if (user) {
-                authContainer.style.display = 'none';
-                accountSection.style.display = 'block';
-
-                // Check if profile exists
-                const userDoc = await db.collection('users').doc(user.uid).get();
-                if (userDoc.exists) {
-                    const userData = userDoc.data();
-                    if (userData.displayName) {
-                        document.getElementById('display-name').value = userData.displayName;
-                    }
-                    if (userData.location) {
-                        document.getElementById('location').value = userData.location;
-                    }
-                    if (userData.profileComplete) {
-                        setupComplete.style.display = 'block';
-                    }
-                }
-            } else {
-                authContainer.style.display = 'block';
-                accountSection.style.display = 'none';
-                profileModal.style.display = 'none';
-            }
-        });
-        
-        // Sign Up
-        signupForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-            const confirmPassword = document.getElementById('signup-confirm-password').value;
-
-            // Reset messages
-            signupError.style.display = 'none';
-            signupSuccess.style.display = 'none';
-
-            if (password !== confirmPassword) {
-                signupError.textContent = 'Passwords do not match';
-                signupError.style.display = 'block';
-                return;
-            }
-
-            try {
-                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-                signupSuccess.textContent = 'Account created successfully!';
-                signupSuccess.style.display = 'block';
-                signupForm.reset();
-
-                // Store additional user data
-                await db.collection('users').doc(userCredential.user.uid).set({
-                    email: email,
-                    createdAt: new Date(),
-                    lastLogin: new Date()
-                });
-            } catch (error) {
-                signupError.textContent = error.message;
-                signupError.style.display = 'block';
-            }
-        });
-
-        // Sign In
-        signinForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('signin-email').value;
-            const password = document.getElementById('signin-password').value;
-
-            // Reset messages
-            signinError.style.display = 'none';
-            signinSuccess.style.display = 'none';
-
-            try {
-                await auth.signInWithEmailAndPassword(email, password);
-                signinSuccess.textContent = 'Signed in successfully!';
-                signinSuccess.style.display = 'block';
-                signinForm.reset();
-            } catch (error) {
-                signinError.textContent = error.message;
-                signinError.style.display = 'block';
-            }
-        });
-
-        // Google Sign In
-        googleSignIn.addEventListener('click', async () => {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            try {
-                const result = await auth.signInWithPopup(provider);
-                // Store user data
-                await db.collection('users').doc(result.user.uid).set({
-                    email: result.user.email,
-                    displayName: result.user.displayName,
-                    lastLogin: new Date()
-                }, { merge: true });
-            } catch (error) {
-                signinError.textContent = error.message;
-                signinError.style.display = 'block';
-            }
-        });
-
-        // Logout
-        logoutBtn.addEventListener('click', async () => {
-            try {
-                await auth.signOut();
-            } catch (error) {
-                console.error('Error signing out:', error);
-            }
-        });
-
-        // Tab Switching Logic (previous code)
-        const tabs = document.querySelectorAll('.tab');
-        const forms = document.querySelectorAll('.form-container');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                forms.forEach(form => {
-                    form.classList.remove('active');
-                    form.classList.add('previous');
-                });
+            const timer = setInterval(() => {
+                progress += (100 / steps);
                 
-                tab.classList.add('active');
-                const targetForm = document.getElementById(`${tab.dataset.tab}-form`);
-                targetForm.classList.add('active');
-                targetForm.classList.remove('previous');
-            });
-        });
-        
-                // Modal controls
-        accountIcon.addEventListener('click', () => {
-            profileModal.style.display = 'block';
-        });
-
-        closeModal.addEventListener('click', () => {
-            profileModal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === profileModal) {
-                profileModal.style.display = 'none';
-            }
-        });
-
-        // Profile form submission
-        profileForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const user = auth.currentUser;
-            if (user) {
-                try {
-                    await db.collection('users').doc(user.uid).update({
-                        displayName: document.getElementById('display-name').value,
-                        location: document.getElementById('location').value,
-                        profileComplete: true,
-                        updatedAt: new Date()
-                    });
-                    setupComplete.style.display = 'block';
-                } catch (error) {
-                    console.error('Error updating profile:', error);
+                if (progress >= 100) {
+                    clearInterval(timer);
+                    progress = 100;
+                    // Redirect after completion
+                    setTimeout(() => {
+                        window.location.href = 'New.html';
+                    }, 500);
                 }
-            }
-        });
-
-        // Delete account
-// Delete account with proper error handling and re-authentication
-deleteAccountBtn.addEventListener('click', async () => {
-    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-        const user = auth.currentUser;
-        if (user) {
-            try {
-                // First delete user data from Firestore
-                await db.collection('users').doc(user.uid).delete();
                 
-                // Then attempt to delete the user account
-                await user.delete();
-                
-                // Show success message
-                alert('Your account has been successfully deleted.');
-            } catch (error) {
-                // Check if the error is due to requiring recent authentication
-                if (error.code === 'auth/requires-recent-login') {
-                    alert('For security reasons, please sign out and sign in again before deleting your account.');
-                    // Sign out the user
-                    await auth.signOut();
-                } else {
-                    alert('Error deleting account: ' + error.message);
-                    console.error('Error deleting account:', error);
-                }
-            }
-        }
-    }
-});
-        
-        // Password strength checker
-        function checkPasswordStrength(password) {
-            const strength = {
-                length: password.length >= 8,
-                hasUpperCase: /[A-Z]/.test(password),
-                hasLowerCase: /[a-z]/.test(password),
-                hasNumber: /\d/.test(password),
-                hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password)
-            };
-
-            const strengthBar = document.getElementById('password-strength');
-            const passedChecks = Object.values(strength).filter(Boolean).length;
-
-            if (passedChecks <= 2) {
-                strengthBar.className = 'password-strength strength-weak';
-            } else if (passedChecks <= 4) {
-                strengthBar.className = 'password-strength strength-medium';
-            } else {
-                strengthBar.className = 'password-strength strength-strong';
-            }
-        }
-        
-         // Password input enhancement
-        document.getElementById('signup-password').addEventListener('input', (e) => {
-            checkPasswordStrength(e.target.value);
+                progressBar.style.width = `${progress}%`;
+            }, interval);
         });
-        
-      function navigateToLanding() {
-        const button = document.querySelector('.quick-nav-button');
-        button.classList.add('loading');
-        button.innerHTML = 'Loading... <i data-lucide="loader" class="animate-spin"></i>';
-        lucide.createIcons(); // Refresh icons
-
-        // Preload the landing page
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = 'Landing page.html';
-        document.head.appendChild(link);
-
-        // Navigate after a brief delay to allow prefetch
-        setTimeout(() => {
-            window.location.href = 'Landing page.html';
-        }, 100);
-
-        // Fallback in case the navigation doesn't happen
-        setTimeout(() => {
-            button.classList.remove('loading');
-            button.innerHTML = 'Go to Landing Page <i data-lucide="arrow-right"></i>';
-            lucide.createIcons(); // Refresh icons
-        }, 3000);
-    }
     </script>
 </body>
 </html>
