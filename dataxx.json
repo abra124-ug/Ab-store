@@ -1,557 +1,806 @@
 {
-  "products": [
-    {
-      "id": 1,
-      "name": "Classic Italian Wool Suit",
-      "price": 599.99,
-      "oldPrice": 799.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#000000", "#2a2a2a", "#4a4a4a"],
-      "sizes": ["S", "M", "L", "XL"],
-      "rating": 4.8,
-      "stock": 15,
-      "details": {
-        "description": "Timeless Italian wool suit with modern cut and superior craftsmanship",
-        "material": "100% Italian Wool",
-        "care": "Dry clean only",
-        "features": [
-          "Super 120s wool",
-          "Half-canvas construction",
-          "Pick-stitched lapels",
-          "Four-button surgeon cuffs"
-        ],
-        "specifications": {
-          "fit": "Classic fit",
-          "closure": "Two-button",
-          "pockets": "Three exterior, four interior",
-          "lining": "Full silk lining"
+    "products": [
+      {
+        "id": 1,
+        "name": "Classic Italian Wool Suit",
+        "price": 599.99,
+        "oldPrice": 799.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#000000", "#2a2a2a", "#4a4a4a"],
+        "sizes": ["S", "M", "L", "XL"],
+        "rating": 4.8,
+        "stock": 15,
+        "details": {
+          "description": "Timeless Italian wool suit with modern cut and superior craftsmanship",
+          "material": "100% Italian Wool",
+          "care": "Dry clean only",
+          "features": [
+            "Super 120s wool",
+            "Half-canvas construction",
+            "Pick-stitched lapels",
+            "Four-button surgeon cuffs"
+          ],
+          "specifications": {
+            "fit": "Classic fit",
+            "closure": "Two-button",
+            "pockets": "Three exterior, four interior",
+            "lining": "Full silk lining"
+          }
         }
-      }
-    },
-    {
-      "id": 2,
-      "name": "Egyptian Cotton Dress Shirt",
-      "price": 89.99,
-      "oldPrice": 119.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#ffffff", "#87CEEB", "#FFB6C1"],
-      "sizes": ["S", "M", "L", "XL", "XXL"],
-      "rating": 4.9,
-      "stock": 25,
-      "details": {
-        "description": "Luxurious Egyptian cotton dress shirt with wrinkle-resistant finish",
-        "material": "100% Egyptian Cotton",
-        "care": "Machine washable",
-        "features": [
-          "Double-ply construction",
-          "Mother-of-pearl buttons",
-          "Split yoke",
-          "Reinforced placket"
-        ],
-        "specifications": {
-          "fit": "Slim fit",
-          "collar": "Spread collar",
-          "cuffs": "Adjustable barrel cuffs",
-          "pocket": "Single chest pocket"
+      },
+      {
+        "id": 2,
+        "name": "Egyptian Cotton Dress Shirt",
+        "price": 89.99,
+        "oldPrice": 119.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#ffffff", "#87CEEB", "#FFB6C1"],
+        "sizes": ["S", "M", "L", "XL", "XXL"],
+        "rating": 4.9,
+        "stock": 25,
+        "details": {
+          "description": "Luxurious Egyptian cotton dress shirt with wrinkle-resistant finish",
+          "material": "100% Egyptian Cotton",
+          "care": "Machine washable",
+          "features": [
+            "Double-ply construction",
+            "Mother-of-pearl buttons",
+            "Split yoke",
+            "Reinforced placket"
+          ],
+          "specifications": {
+            "fit": "Slim fit",
+            "collar": "Spread collar",
+            "cuffs": "Adjustable barrel cuffs",
+            "pocket": "Single chest pocket"
+          }
         }
-      }
-    },
-    {
-      "id": 3,
-      "name": "Handcrafted Italian Leather Oxford",
-      "price": 299.99,
-      "oldPrice": 399.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#8B4513", "#000000", "#A52A2A"],
-      "sizes": ["40", "41", "42", "43", "44", "45"],
-      "rating": 4.7,
-      "stock": 8,
-      "details": {
-        "description": "Hand-stitched Italian leather oxfords with Goodyear welt construction",
-        "material": "Full-grain Italian calfskin",
-        "care": "Regular polishing recommended",
-        "features": [
-          "Goodyear welted sole",
-          "Full leather lining",
-          "Hand-burnished finish",
-          "Cork-filled footbed"
-        ],
-        "specifications": {
-          "sole": "Leather with rubber insert",
-          "construction": "Goodyear welt",
-          "lacing": "Five-eyelet",
-          "heel": "Stacked leather"
+      },
+      {
+        "id": 3,
+        "name": "Italian Leather Oxford",
+        "price": 299.99,
+        "oldPrice": 399.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#8B4513", "#000000", "#A52A2A"],
+        "sizes": ["40", "41", "42", "43", "44", "45"],
+        "rating": 4.7,
+        "stock": 8,
+        "details": {
+          "description": "Hand-stitched Italian leather oxfords with Goodyear welt construction",
+          "material": "Full-grain Italian calfskin",
+          "care": "Regular polishing recommended",
+          "features": [
+            "Goodyear welted sole",
+            "Full leather lining",
+            "Hand-burnished finish",
+            "Cork-filled footbed"
+          ],
+          "specifications": {
+            "sole": "Leather with rubber insert",
+            "construction": "Goodyear welt",
+            "lacing": "Five-eyelet",
+            "heel": "Stacked leather"
+          }
         }
-      }
-    },
-    {
-      "id": 4,
-      "name": "Cashmere Blend Overcoat",
-      "price": 449.99,
-      "oldPrice": 599.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#2a2a2a", "#4a4a4a", "#8B4513"],
-      "sizes": ["S", "M", "L", "XL"],
-      "rating": 4.6,
-      "stock": 12,
-      "details": {
-        "description": "Luxurious cashmere-wool blend overcoat for superior warmth and style",
-        "material": "80% Wool, 20% Cashmere",
-        "care": "Dry clean only",
-        "features": [
-          "Notch lapel",
-          "Three-button closure",
-          "Inside chest pocket",
-          "Center back vent"
-        ],
-        "specifications": {
-          "fit": "Regular fit",
-          "length": "Mid-thigh",
-          "lining": "Full viscose lining",
-          "pockets": "Two flap pockets"
+      },
+      {
+        "id": 4,
+        "name": "Cashmere Blend Overcoat",
+        "price": 449.99,
+        "oldPrice": 599.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#2a2a2a", "#4a4a4a", "#8B4513"],
+        "sizes": ["S", "M", "L", "XL"],
+        "rating": 4.6,
+        "stock": 12,
+        "details": {
+          "description": "Luxurious cashmere-wool blend overcoat for superior warmth and style",
+          "material": "80% Wool, 20% Cashmere",
+          "care": "Dry clean only",
+          "features": [
+            "Notch lapel",
+            "Three-button closure",
+            "Inside chest pocket",
+            "Center back vent"
+          ],
+          "specifications": {
+            "fit": "Regular fit",
+            "length": "Mid-thigh",
+            "lining": "Full viscose lining",
+            "pockets": "Two flap pockets"
+          }
         }
-      }
-    },
-    {
-      "id": 5,
-      "name": "Merino Wool V-Neck Sweater",
-      "price": 129.99,
-      "oldPrice": 159.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#000000", "#4169E1", "#8B0000"],
-      "sizes": ["S", "M", "L", "XL"],
-      "rating": 4.5,
-      "stock": 20,
-      "details": {
-        "description": "Fine merino wool sweater perfect for layering",
-        "material": "100% Merino Wool",
-        "care": "Hand wash cold",
-        "features": [
-          "Ribbed cuffs and hem",
-          "Lightweight knit",
-          "Temperature regulating",
-          "Naturally breathable"
-        ],
-        "specifications": {
-          "fit": "Regular fit",
-          "neckline": "V-neck",
-          "weight": "Medium weight",
-          "origin": "Made in Scotland"
+      },
+      {
+        "id": 5,
+        "name": "Merino Wool V-Neck Sweater",
+        "price": 129.99,
+        "oldPrice": 159.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#000000", "#4169E1", "#8B0000"],
+        "sizes": ["S", "M", "L", "XL"],
+        "rating": 4.5,
+        "stock": 20,
+        "details": {
+          "description": "Fine merino wool sweater perfect for layering",
+          "material": "100% Merino Wool",
+          "care": "Hand wash cold",
+          "features": [
+            "Ribbed cuffs and hem",
+            "Lightweight knit",
+            "Temperature regulating",
+            "Naturally breathable"
+          ],
+          "specifications": {
+            "fit": "Regular fit",
+            "neckline": "V-neck",
+            "weight": "Medium weight",
+            "origin": "Made in Scotland"
+          }
         }
-      }
-    },
-    {
-      "id": 6,
-      "name": "Silk Jacquard Tie",
-      "price": 79.99,
-      "oldPrice": 99.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#000080", "#8B0000", "#006400"],
-      "sizes": ["One Size"],
-      "rating": 4.8,
-      "stock": 30,
-      "details": {
-        "description": "Handmade silk jacquard tie with elegant pattern",
-        "material": "100% Silk",
-        "care": "Dry clean only",
-        "features": [
-          "Hand-rolled edges",
-          "Slip-stitch construction",
-          "Traditional cut",
-          "Signature pattern"
-        ],
-        "specifications": {
-          "width": "3.25 inches",
-          "length": "58 inches",
-          "construction": "Three-fold",
-          "interlining": "Wool"
+      },
+      {
+        "id": 6,
+        "name": "Silk Jacquard Tie",
+        "price": 79.99,
+        "oldPrice": 99.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#000080", "#8B0000", "#006400"],
+        "sizes": ["One Size"],
+        "rating": 4.8,
+        "stock": 30,
+        "details": {
+          "description": "Handmade silk jacquard tie with elegant pattern",
+          "material": "100% Silk",
+          "care": "Dry clean only",
+          "features": [
+            "Hand-rolled edges",
+            "Slip-stitch construction",
+            "Traditional cut",
+            "Signature pattern"
+          ],
+          "specifications": {
+            "width": "3.25 inches",
+            "length": "58 inches",
+            "construction": "Three-fold",
+            "interlining": "Wool"
+          }
         }
-      }
-    },
-    {
-      "id": 7,
-      "name": "Classic Leather Belt",
-      "price": 89.99,
-      "oldPrice": 119.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#8B4513", "#000000"],
-      "sizes": ["32", "34", "36", "38", "40"],
-      "rating": 4.7,
-      "stock": 18,
-      "details": {
-        "description": "Full-grain leather belt with classic silver buckle",
-        "material": "Full-grain calfskin",
-        "care": "Clean with leather conditioner",
-        "features": [
-          "Single piece construction",
-          "Hand-burnished edges",
-          "Five holes",
-          "Solid brass buckle"
-        ],
-        "specifications": {
-          "width": "1.25 inches",
-          "buckle": "Silver-plated brass",
-          "thickness": "3.5mm",
-          "origin": "Made in Italy"
+      },
+      {
+        "id": 7,
+        "name": "Classic Leather Belt",
+        "price": 89.99,
+        "oldPrice": 119.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#8B4513", "#000000"],
+        "sizes": ["32", "34", "36", "38", "40"],
+        "rating": 4.7,
+        "stock": 18,
+        "details": {
+          "description": "Full-grain leather belt with classic silver buckle",
+          "material": "Full-grain calfskin",
+          "care": "Clean with leather conditioner",
+          "features": [
+            "Single piece construction",
+            "Hand-burnished edges",
+            "Five holes",
+            "Solid brass buckle"
+          ],
+          "specifications": {
+            "width": "1.25 inches",
+            "buckle": "Silver-plated brass",
+            "thickness": "3.5mm",
+            "origin": "Made in Italy"
+          }
         }
-      }
-    },
-    {
-      "id": 8,
-      "name": "Tailored Wool Trousers",
-      "price": 159.99,
-      "oldPrice": 199.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#2a2a2a", "#4a4a4a", "#000000"],
-      "sizes": ["30", "32", "34", "36", "38"],
-      "rating": 4.6,
-      "stock": 15,
-      "details": {
-        "description": "Classic wool trousers with refined tailoring",
-        "material": "100% Virgin Wool",
-        "care": "Dry clean only",
-        "features": [
-          "Extended tab closure",
-          "Horn buttons",
-          "Side adjusters",
-          "Unfinished hem"
-        ],
-        "specifications": {
-          "fit": "Classic fit",
-          "rise": "Mid rise",
-          "closure": "Hook and bar",
-          "pockets": "Four pockets"
+      },
+      {
+        "id": 8,
+        "name": "Tailored Wool Trousers",
+        "price": 159.99,
+        "oldPrice": 199.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#2a2a2a", "#4a4a4a", "#000000"],
+        "sizes": ["30", "32", "34", "36", "38"],
+        "rating": 4.6,
+        "stock": 15,
+        "details": {
+          "description": "Classic wool trousers with refined tailoring",
+          "material": "100% Virgin Wool",
+          "care": "Dry clean only",
+          "features": [
+            "Extended tab closure",
+            "Horn buttons",
+            "Side adjusters",
+            "Unfinished hem"
+          ],
+          "specifications": {
+            "fit": "Classic fit",
+            "rise": "Mid rise",
+            "closure": "Hook and bar",
+            "pockets": "Four pockets"
+          }
         }
-      }
-    },
-    {
-      "id": 9,
-      "name": "Silver Cufflink Set",
-      "price": 129.99,
-      "oldPrice": 159.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#C0C0C0"],
-      "sizes": ["One Size"],
-      "rating": 4.9,
-      "stock": 10,
-      "details": {
-        "description": "Sterling silver cufflinks with mother of pearl inlay",
-        "material": "Sterling Silver, Mother of Pearl",
-        "care": "Polish with silver cloth",
-        "features": [
-          "Hand-polished finish",
-          "Swivel back closure",
-          "Presentation box",
-          "Certificate of authenticity"
-        ],
-        "specifications": {
-          "diameter": "16mm",
-          "weight": "12g each",
-          "finish": "High polish",
-          "hallmark": "925 sterling"
+      },
+      {
+        "id": 9,
+        "name": "Silver Cufflink Set",
+        "price": 129.99,
+        "oldPrice": 159.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#C0C0C0"],
+        "sizes": ["One Size"],
+        "rating": 4.9,
+        "stock": 10,
+        "details": {
+          "description": "Sterling silver cufflinks with mother of pearl inlay",
+          "material": "Sterling Silver, Mother of Pearl",
+          "care": "Polish with silver cloth",
+          "features": [
+            "Hand-polished finish",
+            "Swivel back closure",
+            "Presentation box",
+            "Certificate of authenticity"
+          ],
+          "specifications": {
+            "diameter": "16mm",
+            "weight": "12g each",
+            "finish": "High polish",
+            "hallmark": "925 sterling"
+          }
         }
-      }
-    },
-    {
-      "id": 10,
-      "name": "Italian Leather Briefcase",
-      "price": 449.99,
-      "oldPrice": 599.99,
-      "image": "/images/logo.jpg",
-      "colors": ["#8B4513", "#000000"],
-      "sizes": ["One Size"],
-      "rating": 4.8,
-      "stock": 5,
-      "details": {
-        "description": "Premium Italian leather briefcase with laptop compartment",
-        "material": "Full-grain Italian leather",
-        "care": "Regular leather conditioning",
-        "features": [
-          "Brass hardware",
-          "Padded laptop sleeve",
-          "Multiple organizer pockets",
-          "Detachable shoulder strap"
-        ],
-        "specifications": {
-          "dimensions": "16\" x 12\" x 4\"",
-          "laptop-fit": "Up to 15\" laptop",
-          "weight": "2.8 lbs",
-          "warranty": "Lifetime warranty"
+      },
+      {
+        "id": 10,
+        "name": "Italian Leather Briefcase",
+        "price": 449.99,
+        "oldPrice": 599.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#8B4513", "#000000"],
+        "sizes": ["One Size"],
+        "rating": 4.8,
+        "stock": 5,
+        "details": {
+          "description": "Premium Italian leather briefcase with laptop compartment",
+          "material": "Full-grain Italian leather",
+          "care": "Regular leather conditioning",
+          "features": [
+            "Brass hardware",
+            "Padded laptop sleeve",
+            "Multiple organizer pockets",
+            "Detachable shoulder strap"
+          ],
+          "specifications": {
+            "dimensions": "16\" x 12\" x 4\"",
+            "laptop-fit": "Up to 15\" laptop",
+            "weight": "2.8 lbs",
+            "warranty": "Lifetime warranty"
+          }
         }
-      }
-    },
-            {
-            "id": 11,
-            "name": "Slim Fit Navy Chino Pants",
-            "price": 79.99,
-            "oldPrice": 99.99,
-            "image": "/images/logo.jpg",
-            "colors": ["#000080", "#36454F"],
-            "sizes": ["30x32", "32x32", "34x32", "36x32"],
-            "rating": 4.7,
-            "stock": 45,
-            "details": {
-                "description": "Classic navy chinos with modern slim fit design",
-                "material": "Cotton Twill, Stretch Blend",
-                "care": "Machine wash cold, tumble dry low",
-                "features": [
-                    "Slim fit silhouette",
-                    "Flat front design",
-                    "Reinforced pockets",
-                    "Wrinkle-resistant fabric"
-                ],
-                "specifications": {
-                    "fabric": "98% Cotton, 2% Elastane",
-                    "weight": "280g/m²",
-                    "closure": "Zip and button fly",
-                    "pocketStyle": "Side and back welt pockets"
-                }
-            }
-        },
-        {
-            "id": 12,
-            "name": "Leather Oxford Dress Shoes",
-            "price": 189.99,
-            "oldPrice": 249.99,
-            "image": "/images/logo.jpg",
-            "colors": ["#8B4513", "#000000"],
-            "sizes": ["7", "8", "9", "10", "11", "12"],
-            "rating": 4.9,
-            "stock": 30,
-            "details": {
-                "description": "Premium handcrafted leather dress shoes",
-                "material": "Full Grain Leather",
-                "care": "Polish with leather conditioner",
-                "features": [
-                    "Goodyear welted construction",
-                    "Leather sole",
-                    "Cushioned insole",
-                    "Breathable leather lining"
-                ],
-                "specifications": {
-                    "leatherType": "Italian Full Grain",
-                    "soleType": "Leather with rubber heel",
-                    "heelHeight": "1 inch",
-                    "constructionMethod": "Goodyear Welt"
-                }
-            }
-        },
-        {
-            "id": 13,
-            "name": "Casual Linen Button-Down Shirt",
-            "price": 69.99,
-            "oldPrice": 89.99,
-            "image": "/images/logo.jpg",
-            "colors": ["#FFFFFF", "#87CEEB", "#F0E68C"],
-            "sizes": ["S", "M", "L", "XL", "XXL"],
-            "rating": 4.6,
-            "stock": 55,
-            "details": {
-                "description": "Lightweight breathable linen shirt for summer",
-                "material": "100% Linen",
-                "care": "Machine wash, air dry",
-                "features": [
-                    "Button-down collar",
-                    "Single chest pocket",
-                    "Classic fit",
-                    "Rolled sleeve option"
-                ],
-                "specifications": {
-                    "fabricWeight": "150 GSM",
-                    "sleeveLength": "Long",
-                    "neckStyle": "Button-down",
-                    "transparency": "Lightweight"
-                }
-            }
-        },
+      },
               {
-            "id": 14,
-            "name": "Tailored Wool Blazer",
-            "price": 249.99,
-            "oldPrice": 329.99,
-            "image": "/images/wool-blazer.jpg",
-            "colors": ["#000000", "#Navy", "#Charcoal"],
-            "sizes": ["38S", "40R", "42R", "44L"],
-            "rating": 4.8,
-            "stock": 25,
-            "details": {
-                "description": "Premium wool blazer for sophisticated formal wear",
-                "material": "100% Merino Wool",
-                "care": "Dry clean only",
-                "features": [
-                    "Fully lined",
-                    "Notch lapels",
-                    "Ticket pocket",
-                    "Functional sleeve buttons"
-                ],
-                "specifications": {
-                    "woolType": "Super 120s Merino",
-                    "lining": "Silk blend",
-                    "shoulderConstruction": "Soft canvas",
-                    "weight": "380g"
-                }
-            }
-        },
-        {
-            "id": 15,
-            "name": "Stretch Performance Denim Jeans",
-            "price": 99.99,
-            "oldPrice": 129.99,
-            "image": "/images/stretch-jeans.jpg",
-            "colors": ["#0A2342", "#36454F", "#4682B4"],
-            "sizes": ["30x32", "32x32", "34x32", "36x32"],
-            "rating": 4.7,
-            "stock": 40,
-            "details": {
-                "description": "Modern slim-fit jeans with advanced stretch technology",
-                "material": "Cotton Blend with Elastane",
-                "care": "Machine wash cold, tumble dry low",
-                "features": [
-                    "Four-way stretch fabric",
-                    "Hidden phone pocket",
-                    "Reinforced seams",
-                    "Modern slim fit"
-                ],
-                "specifications": {
-                    "composition": "92% Cotton, 8% Elastane",
-                    "fabricWeight": "12.5 oz",
-                    "stretch": "360-degree",
-                    "washType": "Medium wash"
-                }
-            }
-        },
-        {
-            "id": 16,
-            "name": "Performance Athletic Polo Shirt",
-            "price": 54.99,
-            "oldPrice": 74.99,
-            "image": "/images/athletic-polo.jpg",
-            "colors": ["#FFFFFF", "#0000FF", "#008000"],
-            "sizes": ["S", "M", "L", "XL", "XXL"],
-            "rating": 4.6,
-            "stock": 60,
-            "details": {
-                "description": "Moisture-wicking athletic polo for active men",
-                "material": "Polyester Performance Fabric",
-                "care": "Machine wash, quick dry",
-                "features": [
-                    "Anti-odor technology",
-                    "Quick-dry fabric",
-                    "UPF 50+ sun protection",
-                    "Breathable mesh panels"
-                ],
-                "specifications": {
-                    "fabricType": "Moisture-wicking polyester",
-                    "neckStyle": "Classic polo",
-                    "sleeveType": "Short sleeve",
-                    "stretchFactor": "4-way stretch"
-                }
-            }
-        },
-{
-  "products": [
+              "id": 11,
+              "name": "Slim Fit Navy Chino Pants",
+              "price": 79.99,
+              "oldPrice": 99.99,
+              "image": "/images/logo.jpg",
+              "colors": ["#000080", "#36454F"],
+              "sizes": ["30x32", "32x32", "34x32", "36x32"],
+              "rating": 4.7,
+              "stock": 45,
+              "details": {
+                  "description": "Classic navy chinos with modern slim fit design",
+                  "material": "Cotton Twill, Stretch Blend",
+                  "care": "Machine wash cold, tumble dry low",
+                  "features": [
+                      "Slim fit silhouette",
+                      "Flat front design",
+                      "Reinforced pockets",
+                      "Wrinkle-resistant fabric"
+                  ],
+                  "specifications": {
+                      "fabric": "98% Cotton, 2% Elastane",
+                      "weight": "280g/m²",
+                      "closure": "Zip and button fly",
+                      "pocketStyle": "Side and back welt pockets"
+                  }
+              }
+          },
+          {
+              "id": 12,
+              "name": "Leather Oxford Dress Shoes",
+              "price": 189.99,
+              "oldPrice": 249.99,
+              "image": "/images/logo.jpg",
+              "colors": ["#8B4513", "#000000"],
+              "sizes": ["7", "8", "9", "10", "11", "12"],
+              "rating": 4.9,
+              "stock": 30,
+              "details": {
+                  "description": "Premium handcrafted leather dress shoes",
+                  "material": "Full Grain Leather",
+                  "care": "Polish with leather conditioner",
+                  "features": [
+                      "Goodyear welted construction",
+                      "Leather sole",
+                      "Cushioned insole",
+                      "Breathable leather lining"
+                  ],
+                  "specifications": {
+                      "leatherType": "Italian Full Grain",
+                      "soleType": "Leather with rubber heel",
+                      "heelHeight": "1 inch",
+                      "constructionMethod": "Goodyear Welt"
+                  }
+              }
+          },
+          {
+              "id": 13,
+              "name": "Casual Linen Button-Down Shirt",
+              "price": 69.99,
+              "oldPrice": 89.99,
+              "image": "/images/logo.jpg",
+              "colors": ["#FFFFFF", "#87CEEB", "#F0E68C"],
+              "sizes": ["S", "M", "L", "XL", "XXL"],
+              "rating": 4.6,
+              "stock": 55,
+              "details": {
+                  "description": "Lightweight breathable linen shirt for summer",
+                  "material": "100% Linen",
+                  "care": "Machine wash, air dry",
+                  "features": [
+                      "Button-down collar",
+                      "Single chest pocket",
+                      "Classic fit",
+                      "Rolled sleeve option"
+                  ],
+                  "specifications": {
+                      "fabricWeight": "150 GSM",
+                      "sleeveLength": "Long",
+                      "neckStyle": "Button-down",
+                      "transparency": "Lightweight"
+                  }
+              }
+          },
+                {
+              "id": 14,
+              "name": "Tailored Wool Blazer",
+              "price": 249.99,
+              "oldPrice": 329.99,
+              "image": "/images/logo.jpg",
+              "colors": ["#000000", "#Navy", "#Charcoal"],
+              "sizes": ["38S", "40R", "42R", "44L"],
+              "rating": 4.8,
+              "stock": 25,
+              "details": {
+                  "description": "Premium wool blazer for sophisticated formal wear",
+                  "material": "100% Merino Wool",
+                  "care": "Dry clean only",
+                  "features": [
+                      "Fully lined",
+                      "Notch lapels",
+                      "Ticket pocket",
+                      "Functional sleeve buttons"
+                  ],
+                  "specifications": {
+                      "woolType": "Super 120s Merino",
+                      "lining": "Silk blend",
+                      "shoulderConstruction": "Soft canvas",
+                      "weight": "380g"
+                  }
+              }
+          },
+          {
+              "id": 15,
+              "name": "Stretch Performance Denim Jeans",
+              "price": 99.99,
+              "oldPrice": 129.99,
+             "image": "/images/logo.jpg",
+              "colors": ["#0A2342", "#36454F", "#4682B4"],
+              "sizes": ["30x32", "32x32", "34x32", "36x32"],
+              "rating": 4.7,
+              "stock": 40,
+              "details": {
+                  "description": "Modern slim-fit jeans with advanced stretch technology",
+                  "material": "Cotton Blend with Elastane",
+                  "care": "Machine wash cold, tumble dry low",
+                  "features": [
+                      "Four-way stretch fabric",
+                      "Hidden phone pocket",
+                      "Reinforced seams",
+                      "Modern slim fit"
+                  ],
+                  "specifications": {
+                      "composition": "92% Cotton, 8% Elastane",
+                      "fabricWeight": "12.5 oz",
+                      "stretch": "360-degree",
+                      "washType": "Medium wash"
+                  }
+              }
+          },
+          {
+              "id": 16,
+              "name": "Performance Athletic Polo Shirt",
+              "price": 54.99,
+              "oldPrice": 74.99,
+              "image": "/images/logo.jpg",
+              "colors": ["#FFFFFF", "#0000FF", "#008000"],
+              "sizes": ["S", "M", "L", "XL", "XXL"],
+              "rating": 4.6,
+              "stock": 60,
+              "details": {
+                  "description": "Moisture-wicking athletic polo for active men",
+                  "material": "Polyester Performance Fabric",
+                  "care": "Machine wash, quick dry",
+                  "features": [
+                      "Anti-odor technology",
+                      "Quick-dry fabric",
+                      "UPF 50+ sun protection",
+                      "Breathable mesh panels"
+                  ],
+                  "specifications": {
+                      "fabricType": "Moisture-wicking polyester",
+                      "neckStyle": "Classic polo",
+                      "sleeveType": "Short sleeve",
+                      "stretchFactor": "4-way stretch"
+                  }
+              }
+          },
+      {
+        "id": 17,
+        "name": "Luxury Cashmere Scarf",
+        "price": 149.99,
+        "oldPrice": 199.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#C0C0C0", "#000000", "#B22222"],
+        "sizes": ["One Size"],
+        "rating": 4.9,
+        "stock": 30,
+        "details": {
+          "description": "Soft and warm cashmere scarf, perfect for winter.",
+          "material": "100% Cashmere",
+          "care": "Dry clean only",
+          "features": [
+            "Lightweight and warm",
+            "Fringe detailing",
+            "Versatile styling options"
+          ],
+          "specifications": {
+            "dimensions": "70\" x 12\"",
+            "weight": "150g",
+            "origin": "Made in Nepal"
+          }
+        }
+      },
+      {
+        "id": 18,
+        "name": "Classic Wool Beanie",
+        "price": 39.99,
+        "oldPrice": 49.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#000000", "#808080", "#A52A2A"],
+        "sizes": ["One Size"],
+        "rating": 4.5,
+        "stock": 50,
+        "details": {
+          "description": "Warm and stylish wool beanie for cold weather.",
+          "material": "100% Wool",
+          "care": "Hand wash cold",
+          "features": [
+            "Stretch fit",
+            "Classic ribbed design",
+            "Available in multiple colors"
+          ],
+          "specifications": {
+            "weight": "100g",
+            "origin": "Made in Italy"
+          }
+        }
+      },
+      {
+        "id": 19,
+        "name": "Leather Messenger Bag",
+        "price": 199.99,
+        "oldPrice": 249.99,
+       "image": "/images/logo.jpg",
+        "colors": ["#8B4513", "#000000"],
+        "sizes": ["One Size"],
+        "rating": 4.8,
+        "stock": 15,
+        "details": {
+          "description": "Stylish leather messenger bag with ample storage.",
+          "material": "Full-grain Leather",
+          "care": "Regular leather conditioning",
+          "features": [
+            "Adjustable shoulder strap",
+            "Multiple compartments",
+            "Magnetic closure"
+          ],
+          "specifications": {
+            "dimensions": "15\" x 11\" x 4\"",
+            "weight": "1.5 lbs",
+            "warranty": "1 year warranty"
+          }
+        }
+      },
+      {
+        "id": 20,
+        "name": "Cotton Canvas Backpack",
+        "price": 59.99,
+        "oldPrice": 79.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#2F4F4F", "#4682B4", "#8B0000"],
+        "sizes": ["One Size"],
+        "rating": 4.6,
+        "stock": 40,
+        "details": {
+          "description": "Durable cotton canvas backpack for everyday use.",
+          "material": "100% Cotton Canvas",
+          "care": "Spot clean only",
+          "features": [
+            "Padded shoulder straps",
+            "Multiple pockets",
+            "Water-resistant"
+          ],
+          "specifications": {
+            "dimensions": "18\" x 12\" x 6\"",
+            "weight": "1.2 lbs",
+            "capacity": "20 liters"
+          }
+        }
+      },
+      
     {
-      "id": 17,
-      "name": "Luxury Cashmere Scarf",
-      "price": 149.99,
-      "oldPrice": 199.99,
-      "image": "/images/cashmere-scarf.jpg",
-      "colors": ["#C0C0C0", "#000000", "#B22222"],
-      "sizes": ["One Size"],
-      "rating": 4.9,
-      "stock": 30,
-      "details": {
-        "description": "Soft and warm cashmere scarf, perfect for winter.",
-        "material": "100% Cashmere",
-        "care": "Dry clean only",
-        "features": [
-          "Lightweight and warm",
-          "Fringe detailing",
-          "Versatile styling options"
-        ],
-        "specifications": {
-          "dimensions": "70\" x 12\"",
-          "weight": "150g",
-          "origin": "Made in Nepal"
+        "id": 21,
+        "name": "Slim Fit Dress Shirt",
+        "price": 49.99,
+        "oldPrice": 69.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#FFFFFF", "#000000", "#1E90FF"],
+        "sizes": ["S", "M", "L", "XL"],
+        "rating": 4.5,
+        "stock": 30,
+        "details": {
+          "description": "A stylish slim fit dress shirt for formal occasions.",
+          "material": "65% Cotton, 35% Polyester",
+          "care": "Machine wash cold",
+          "features": [
+            "Button-down collar",
+            "Long sleeves",
+            "Easy iron"
+          ],
+          "specifications": {
+            "dimensions": "Standard sizing",
+            "weight": "0.5 lbs"
+          }
+        }
+      },
+      {
+        "id": 22,
+        "name": "Chinos Pants",
+        "price": 39.99,
+        "oldPrice": 59.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#C0C0C0", "#A52A2A", "#4682B4"],
+        "sizes": ["30", "32", "34", "36"],
+        "rating": 4.3,
+        "stock": 25,
+        "details": {
+          "description": "Comfortable chinos for casual and semi-formal wear.",
+          "material": "100% Cotton",
+          "care": "Machine wash cold",
+          "features": [
+            "Slim fit",
+            "Belt loops",
+            "Side pockets"
+          ],
+          "specifications": {
+            "dimensions": "Standard sizing",
+            "weight": "1.0 lbs"
+          }
+        }
+      },
+      {
+        "id": 23,
+        "name": "Leather Belt",
+        "price": 29.99,
+        "oldPrice": 39.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#000000", "#8B4513"],
+        "sizes": ["30", "32", "34", "36"],
+        "rating": 4.7,
+        "stock": 50,
+        "details": {
+          "description": "Classic leather belt for everyday use.",
+          "material": "100% Genuine Leather",
+          "care": "Wipe clean with a damp cloth",
+          "features": [
+            "Adjustable size",
+            "Durable buckle",
+            "Stylish design"
+          ],
+          "specifications": {
+            "dimensions": "1.5\" width",
+            "weight": "0.3 lbs"
+          }
+        }
+      },
+      {
+        "id": 24,
+        "name": "Casual Sneakers",
+        "price": 69.99,
+        "oldPrice": 89.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#FFFFFF", "#000000", "#FF4500"],
+        "sizes": ["8", "9", "10", "11"],
+        "rating": 4.6,
+        "stock": 20,
+        "details": {
+          "description": "Comfortable sneakers for everyday wear.",
+          "material": "Canvas and Rubber",
+          "care": "Spot clean only",
+          "features": [
+            "Breathable material",
+            "Cushioned insole",
+            "Lightweight"
+          ],
+          "specifications": {
+            "dimensions": "Standard sizing",
+            "weight": "1.2 lbs"
+          }
+        }
+      },
+      {
+        "id": 25,
+        "name": "Wool Blazer",
+        "price": 129.99,
+        "oldPrice": 159.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#000000", "#2F4F4F", "#708090"],
+        "sizes": ["S", "M", "L", "XL"],
+        "rating": 4.8,
+        "stock": 15,
+        "details": {
+          "description": "Elegant wool blazer for formal events.",
+          "material": "100% Wool",
+          "care": "Dry clean only",
+          "features": [
+            "Single-breasted",
+            "Notched lapel",
+            "Two pockets"
+          ],
+          "specifications": {
+            "dimensions": "Standard sizing",
+            "weight": "1.5 lbs"
+          }
+        }
+      },
+      {
+        "id": 26,
+        "name": "Graphic T-Shirt",
+        " price": 24.99,
+        "oldPrice": 34.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#FFFFFF", "#000000", "#FFD700"],
+        "sizes": ["S", "M", "L", "XL"],
+        "rating": 4.4,
+        "stock": 40,
+        "details": {
+          "description": "Trendy graphic t-shirt for casual outings.",
+          "material": "100% Cotton",
+          "care": "Machine wash cold",
+          "features": [
+            "Round neck",
+            "Short sleeves",
+            "Unique designs"
+          ],
+          "specifications": {
+            "dimensions": "Standard sizing",
+            "weight": "0.4 lbs"
+          }
+        }
+      },
+      {
+        "id": 27,
+        "name": "Leather Wallet",
+        "price": 39.99,
+        "oldPrice": 49.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#000000", "#8B4513"],
+        "sizes": ["One Size"],
+        "rating": 4.5,
+        "stock": 60,
+        "details": {
+          "description": "Sleek leather wallet with multiple card slots.",
+          "material": "100% Genuine Leather",
+          "care": "Wipe clean with a damp cloth",
+          "features": [
+            "RFID blocking",
+            "Compact design",
+            "Durable stitching"
+          ],
+          "specifications": {
+            "dimensions": "4.5\" x 3.5\"",
+            "weight": "0.2 lbs"
+          }
+        }
+      },
+      {
+        "id": 28,
+        "name": "Cargo Shorts",
+        "price": 34.99,
+        "oldPrice": 44.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#B22222", "#808080", "#4682B4"],
+        "sizes": ["30", "32", "34", "36"],
+        "rating": 4.2,
+        "stock": 35,
+        "details": {
+          "description": "Versatile cargo shorts for summer wear.",
+          "material": "100% Cotton",
+          "care": "Machine wash cold",
+          "features": [
+            "Multiple pockets",
+            "Adjustable waistband",
+            "Breathable fabric"
+          ],
+          "specifications": {
+            "dimensions": "Standard sizing",
+            "weight": "0.5 lbs"
+          }
+        }
+      },
+      {
+        "id": 29,
+        "name": "Dress Shoes",
+        "price": 89.99,
+        "oldPrice": 109.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#000000", "#8B4513"],
+        "sizes": ["8", "9", "10", "11"],
+        "rating": 4.6,
+        "stock": 20,
+        "details": {
+          "description": "Classic dress shoes for formal occasions.",
+          "material": "Genuine Leather",
+          "care": "Polish regularly",
+          "features": [
+            "Comfortable insole",
+            "Stylish design",
+            "Durable outsole"
+          ],
+          "specifications": {
+            "dimensions": "Standard sizing",
+            "weight": "1.5 lbs"
+          }
+        }
+      },
+      {
+        "id": 30,
+        "name": "Polo Shirt",
+        "price": 39.99,
+        "oldPrice": 49.99,
+        "image": "/images/logo.jpg",
+        "colors": ["#FFFFFF", "#000000", "#32CD32"],
+        "sizes": ["S", "M", "L", "XL"],
+        "rating": 4.5,
+        "stock": 45,
+        "details": {
+          "description": "Classic polo shirt for casual and semi-formal wear.",
+          "material": "100% Cotton",
+          "care": "Machine wash cold",
+          "features": [
+            "Collared",
+            "Short sleeves",
+            "Breathable fabric"
+          ],
+          "specifications": {
+            "dimensions": "Standard sizing",
+            "weight": "0.4 lbs"
+          }
         }
       }
-    },
-    {
-      "id": 18,
-      "name": "Classic Wool Beanie",
-      "price": 39.99,
-      "oldPrice": 49.99,
-      "image": "/images/wool-beanie.jpg",
-      "colors": ["#000000", "#808080", "#A52A2A"],
-      "sizes": ["One Size"],
-      "rating": 4.5,
-      "stock": 50,
-      "details": {
-        "description": "Warm and stylish wool beanie for cold weather.",
-        "material": "100% Wool",
-        "care": "Hand wash cold",
-        "features": [
-          "Stretch fit",
-          "Classic ribbed design",
-          "Available in multiple colors"
-        ],
-        "specifications": {
-          "weight": "100g",
-          "origin": "Made in Italy"
-        }
-      }
-    },
-    {
-      "id": 19,
-      "name": "Leather Messenger Bag",
-      "price": 199.99,
-      "oldPrice": 249.99,
-      "image": "/images/leather-messenger-bag.jpg",
-      "colors": ["#8B4513", "#000000"],
-      "sizes": ["One Size"],
-      "rating": 4.8,
-      "stock": 15,
-      "details": {
-        "description": "Stylish leather messenger bag with ample storage.",
-        "material": "Full-grain Leather",
-        "care": "Regular leather conditioning",
-        "features": [
-          "Adjustable shoulder strap",
-          "Multiple compartments",
-          "Magnetic closure"
-        ],
-        "specifications": {
-          "dimensions": "15\" x 11\" x 4\"",
-          "weight": "1.5 lbs",
-          "warranty": "1 year warranty"
-        }
-      }
-    },
-    {
-      "id": 20,
-      "name": "Cotton Canvas Backpack",
-      "price": 59.99,
-      "oldPrice": 79.99,
-      "image": "/images/canvas-backpack.jpg",
-      "colors": ["#2F4F4F", "#4682B4", "#8B0000"],
-      "sizes": ["One Size"],
-      "rating": 4.6,
-      "stock": 40,
-      "details": {
-        "description": "Durable cotton canvas backpack for everyday use.",
-        "material": "100% Cotton Canvas",
-        "care": "Spot clean only",
-        "features": [
-          "Padded shoulder straps",
-          "Multiple pockets",
-          "Water-resistant"
-        ],
-        "specifications": {
-          "dimensions": "18\" x 12\" x 6\"",
-          "weight": "1.2 lbs",
-          "capacity": "20 liters"
-        }
-      }
-    }
-  ]
-}
+    ]
+  }
