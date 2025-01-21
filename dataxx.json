@@ -615,34 +615,6 @@
         "neckStyle": "Crew neck"
       }
     }
-  },
-  {
-    "id": 23,
-    "name": "Waterproof Parka Jacket",
-    "price": 129.99,
-    "oldPrice": 159.99,
-    "image": "/images/parka-jacket.jpg",
-    "colors": ["#000000", "#708090"],
-    "sizes": ["S", "M", "L", "XL", "XXL"],
-    "rating": 4.9,
-    "stock": 30,
-    "details": {
-      "description": "All-weather parka for outdoor adventures",
-      "material": "Polyester with waterproof coating",
-      "care": "Machine wash warm, tumble dry low",
-      "features": [
-        "Waterproof and windproof",
-        "Adjustable hood",
-        "Multiple zippered pockets",
-        "Thermal lining"
-      ],
-      "specifications": {
-        "fit": "Relaxed fit",
-        "closure": "Zipper with snap placket",
-        "hood": "Detachable hood",
-        "length": "Hip-length"
-      }
-    }
-  },
+  }
   ]
 }
