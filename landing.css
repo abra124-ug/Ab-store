@@ -474,6 +474,10 @@
             background: var(--primary-dark);
         }
 
+        .add-to-cart i {
+            margin-right: 8px;
+        }   
+
         /* Features */
         .features {
             padding: 4rem 0;
@@ -779,3 +783,237 @@
     padding: 2rem;
     color: var(--text-light);
 }
+
+.detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.detail-overlay.open {
+    display: flex;
+}
+
+.detail-content {
+    background: white;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 100vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    position: relative;
+    padding: 2rem;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.detail-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.detail-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.stock-bar-container {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.stock-bar {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.stock-text {
+    display: block;
+    margin-top: 0.5rem;
+    color: #666;
+}
+
+.detail-colors,
+.detail-sizes {
+    margin: 1.5rem 0;
+}
+
+.detail-rating {
+    margin: 1rem 0;
+    color: #ffd700;
+}
+
+.detail-rating span {
+    color: #666;
+    margin-left: 0.5rem;
+}
+
+.add-to-cart-detail {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-detail:hover {
+    background:var(--primary-dark);
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.view-details {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0.5rem 0;
+    transition: background-color 0.3s;
+}
+
+.view-details:hover {
+    background: var(--primary-dark);
+}
+
+.product-description {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+.product-details-section {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.material-care,
+.features-section,
+.specifications-section {
+    margin: 1.5rem 0;
+}
+
+.material-care p {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.features-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.features-section li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #555;
+}
+
+.features-section li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2196F3;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.spec-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.spec-value {
+    color: #333;
+    font-weight: 500;
+}
+
+h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+}
+
+/* Make detail content scrollable on smaller screens */
+@media (max-height: 800px) {
+    .detail-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+        :root {
+            --primary: #00A884;
+            --primary-dark: #005F4E;
+            --secondary: #475569;
+            --accent: #f59e0b;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --radius: 0.5rem;
+            --header-height: 4rem;
+            --transition: all 0.3s ease;
+            --max-width: 1280px;
+        }
