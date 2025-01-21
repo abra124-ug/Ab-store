@@ -447,6 +447,137 @@
                     "stretchFactor": "4-way stretch"
                 }
             }
+        },
+{
+  "products": [
+    {
+      "id": 17,
+      "name": "Luxury Cashmere Scarf",
+      "price": 149.99,
+      "oldPrice": 199.99,
+      "image": "/images/cashmere-scarf.jpg",
+      "colors": ["#C0C0C0", "#000000", "#B22222"],
+      "sizes": ["One Size"],
+      "rating": 4.9,
+      "stock": 30,
+      "details": {
+        "description": "Soft and warm cashmere scarf, perfect for winter.",
+        "material": "100% Cashmere",
+        "care": "Dry clean only",
+        "features": [
+          "Lightweight and warm",
+          "Fringe detailing",
+          "Versatile styling options"
+        ],
+        "specifications": {
+          "dimensions": "70\" x 12\"",
+          "weight": "150g",
+          "origin": "Made in Nepal"
         }
+      }
+    },
+    {
+      "id": 18,
+      "name": "Classic Wool Beanie",
+      "price": 39.99,
+      "oldPrice": 49.99,
+      "image": "/images/wool-beanie.jpg",
+      "colors": ["#000000", "#808080", "#A52A2A"],
+      "sizes": ["One Size"],
+      "rating": 4.5,
+      "stock": 50,
+      "details": {
+        "description": "Warm and stylish wool beanie for cold weather.",
+        "material": "100% Wool",
+        "care": "Hand wash cold",
+        "features": [
+          "Stretch fit",
+          "Classic ribbed design",
+          "Available in multiple colors"
+        ],
+        "specifications": {
+          "weight": "100g",
+          "origin": "Made in Italy"
+        }
+      }
+    },
+    {
+      "id": 19,
+      "name": "Leather Messenger Bag",
+      "price": 199.99,
+      "oldPrice": 249.99,
+      "image": "/images/leather-messenger-bag.jpg",
+      "colors": ["#8B4513", "#000000"],
+      "sizes": ["One Size"],
+      "rating": 4.8,
+      "stock": 15,
+      "details": {
+        "description": "Stylish leather messenger bag with ample storage.",
+        "material": "Full-grain Leather",
+        "care": "Regular leather conditioning",
+        "features": [
+          "Adjustable shoulder strap",
+          "Multiple compartments",
+          "Magnetic closure"
+        ],
+        "specifications": {
+          "dimensions": "15\" x 11\" x 4\"",
+          "weight": "1.5 lbs",
+          "warranty": "1 year warranty"
+        }
+      }
+    },
+    {
+      "id": 20,
+      "name": "Cotton Canvas Backpack",
+      "price": 59.99,
+      "oldPrice": 79.99,
+      "image": "/images/canvas-backpack.jpg",
+      "colors": ["#2F4F4F", "#4682B4", "#8B0000"],
+      "sizes": ["One Size"],
+      "rating": 4.6,
+      "stock": 40,
+      "details": {
+        "description": "Durable cotton canvas backpack for everyday use.",
+        "material": "100% Cotton Canvas",
+        "care": "Spot clean only",
+        "features": [
+          "Padded shoulder straps",
+          "Multiple pockets",
+          "Water-resistant"
+        ],
+        "specifications": {
+          "dimensions": "18\" x 12\" x 6\"",
+          "weight": "1.2 lbs",
+          "capacity": "20 liters"
+        }
+      }
+    },
+    {
+      "id": 21,
+      "name": "Silk Pocket Square",
+      "price": 29.99,
+      "oldPrice": 39.99,
+      "image": "/images/silk-pocket-square.jpg",
+      "colors": ["#FF4500", "#000000", "#FFFFFF"],
+      "sizes": ["One Size"],
+      "rating": 4.7,
+      "stock": 100,
+      "details": {
+        "description": "Elegant silk pocket square to elevate any outfit.",
+        "material": "100% Silk",
+        "care": "Dry clean only",
+        "features": [
+          "Hand-rolled edges",
+          "Vibrant colors",
+          "Versatile styling"
+        ],
+        "specifications": {
+          "dimensions": "12\" x 12\"",
+          "weight": "30g",
+          "origin": "Made in Italy"
+        }
+      }
+    }
   ]
 }
