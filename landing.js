@@ -2,6 +2,7 @@
   // State
 let products = [];
 let cart = [];
+let currentDetailProduct = null;
 
 // DOM Elements
 const productsGrid = document.getElementById('productsGrid');
@@ -11,6 +12,7 @@ const cartItems = document.getElementById('cartItems');
 const cartTotal = document.getElementById('cartTotal');
 const cartCount = document.querySelector('.cart-count');
 const searchInput = document.getElementById('searchInput');
+const detailOverlay = document.getElementById('detailOverlay');
 
 // Event Listeners
 document.getElementById('cartBtn').addEventListener('click', toggleCart);
@@ -50,10 +52,9 @@ function renderProducts(productsToRender = products) {
         return;
     }
 
-    // Get 8 random products
     const randomProducts = productsToRender
-        .sort(() => Math.random() - 0.5) // Shuffle the array
-        .slice(0, 8); // Take first 8 items
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 8);
 
     productsGrid.innerHTML = randomProducts.map(product => `
         <div class="product-card" data-id="${product.id}">
@@ -66,21 +67,10 @@ function renderProducts(productsToRender = products) {
                     <span class="current-price">$${product.price}</span>
                     <span class="old-price">$${product.oldPrice}</span>
                 </div>
-                <div class="product-meta">
-                    <div class="color-options">
-                        ${product.colors.map(color => `
-                            <button class="color-option" style="background-color: ${color}" data-color="${color}"></button>
-                        `).join('')}
-                    </div>
-                    <div class="size-options">
-                        ${product.sizes.map(size => `
-                            <button class="size-option" data-size="${size}">${size}</button>
-                        `).join('')}
-                    </div>
-                </div>
-                <button class="add-to-cart" data-id="${product.id}">
-                    Add to Cart
+                <button class="view-details" onclick="openDetailPage(${product.id})">
+                    View Details
                 </button>
+
             </div>
         </div>
     `).join('');
@@ -135,7 +125,7 @@ function addToCart(productId, size) {
     saveCartToLocalStorage();
     
     // Show alert instead of opening cart
-    showNotification(`${product.name} has been added to your cart!`);
+    showNotification(`${product.name} added to cart!`);
 }
 
 // Add this new function for showing notifications
@@ -150,7 +140,7 @@ function showNotification(message) {
         position: fixed;
         top: 20px;
         right: 20px;
-        background-color: #4CAF50;
+        background-color: #00A884;
         color: white;
         padding: 15px 25px;
         border-radius: 4px;
@@ -248,6 +238,151 @@ function toggleSearch() {
     if (searchOverlay.classList.contains('open')) {
         searchInput.focus();
     }
+}
+
+// Add detail page toggle functions
+function openDetailPage(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    currentDetailProduct = product;
+    renderDetailPage(product);
+    detailOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDetailPage() {
+    detailOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    currentDetailProduct = null;
+}
+
+function renderDetailPage(product) {
+    const stockPercentage = (product.stock / 50) * 100;
+    const stockStatus = product.stock > 0 ? 
+        `${product.stock} items left in stock` : 
+        'Out of stock';
+    const stockBarColor = product.stock > 10 ? '#4CAF50' : 
+                         product.stock > 5 ? '#FFA500' : 
+                         '#FF0000';
+
+    detailOverlay.innerHTML = `
+        <div class="detail-content">
+            <button id="closeDetail" class="close-button">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="detail-grid">
+                <div class="detail-image">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="detail-info">
+                    <h2>${product.name}</h2>
+                    <div class="detail-pricing">
+                        <span class="current-price">$${product.price}</span>
+                        <span class="old-price">$${product.oldPrice}</span>
+                    </div>
+                    <div class="detail-rating">
+                        ${renderStars(product.rating)}
+                        <span>(${product.rating} / 5)</span>
+                    </div>
+                    <p class="product-description">${product.details.description}</p>
+                    
+                    <div class="stock-info">
+                        <div class="stock-bar-container">
+                            <div class="stock-bar" style="width: ${stockPercentage}%; background-color: ${stockBarColor}"></div>
+                        </div>
+                        <span class="stock-text">${stockStatus}</span>
+                    </div>
+
+                    <div class="product-details-section">
+                        <div class="material-care">
+                            <h3>Material & Care</h3>
+                            <p><strong>Material:</strong> ${product.details.material}</p>
+                            <p><strong>Care:</strong> ${product.details.care}</p>
+                        </div>
+                        
+                        <div class="features-section">
+                            <h3>Key Features</h3>
+                            <ul>
+                                ${product.details.features.map(feature => `
+                                    <li>${feature}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="specifications-section">
+                            <h3>Specifications</h3>
+                            <div class="specs-grid">
+                                ${Object.entries(product.details.specifications).map(([key, value]) => `
+                                    <div class="spec-item">
+                                        <span class="spec-label">${key.charAt(0).toUpperCase() + key.slice(1)}:</span>
+                                        <span class="spec-value">${value}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-colors">
+                        <h3>Available Colors</h3>
+                        <div class="color-options">
+                            ${product.colors.map(color => `
+                                <button class="color-option" style="background-color: ${color}" data-color="${color}"></button>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="detail-sizes">
+                        <h3>Available Sizes</h3>
+                        <div class="size-options">
+                            ${product.sizes.map(size => `
+                                <button class="size-option" data-size="${size}">${size}</button>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <button class="add-to-cart-detail" data-id="${product.id}">                    <i class="fas fa-shopping-cart"></i> 
+                        Add to Cart
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+    `;
+
+
+    // Add event listeners
+    document.getElementById('closeDetail').addEventListener('click', closeDetailPage);
+    detailOverlay.addEventListener('click', (e) => {
+        if (e.target === detailOverlay) closeDetailPage();
+    });
+
+    // Add size selection listeners
+    detailOverlay.querySelectorAll('.size-option').forEach(btn => {
+        btn.addEventListener('click', function() {
+            detailOverlay.querySelectorAll('.size-option').forEach(b => b.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+
+    // Add to cart listener
+    detailOverlay.querySelector('.add-to-cart-detail').addEventListener('click', function() {
+        const selectedSize = detailOverlay.querySelector('.size-option.selected');
+        if (!selectedSize) {
+            alert('Please select a size');
+            return;
+        }
+        addToCart(product.id, selectedSize.dataset.size);
+    });
+}
+
+function renderStars(rating) {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    
+    return `
+        ${Array(fullStars).fill('<i class="fas fa-star"></i>').join('')}
+        ${hasHalfStar ? '<i class="fas fa-star-half-alt"></i>' : ''}
+        ${Array(emptyStars).fill('<i class="far fa-star"></i>').join('')}
+    `;
 }
 
 // Search functionality
