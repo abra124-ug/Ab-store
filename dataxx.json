@@ -552,32 +552,6 @@
           "capacity": "20 liters"
         }
       }
-    },
-    {
-      "id": 21,
-      "name": "Silk Pocket Square",
-      "price": 29.99,
-      "oldPrice": 39.99,
-      "image": "/images/silk-pocket-square.jpg",
-      "colors": ["#FF4500", "#000000", "#FFFFFF"],
-      "sizes": ["One Size"],
-      "rating": 4.7,
-      "stock": 100,
-      "details": {
-        "description": "Elegant silk pocket square to elevate any outfit.",
-        "material": "100% Silk",
-        "care": "Dry clean only",
-        "features": [
-          "Hand-rolled edges",
-          "Vibrant colors",
-          "Versatile styling"
-        ],
-        "specifications": {
-          "dimensions": "12\" x 12\"",
-          "weight": "30g",
-          "origin": "Made in Italy"
-        }
-      }
     }
   ]
 }
